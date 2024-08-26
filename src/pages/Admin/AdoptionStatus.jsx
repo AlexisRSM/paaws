@@ -15,7 +15,7 @@ function AdoptionStatus() {
     const fetchAdoptions = async () => {
       try {
         const data = await getAllAdoptions();
-        await new Promise(resolve => setTimeout(resolve, 600));//give a delay of 600ms to see if401 problem is authentication or fetch
+        await new Promise(resolve => setTimeout(resolve, 1000));//give a delay of 600ms to see if401 problem is authentication or fetch
         setAdoptions(data);
         setError('');
       } catch (error) {

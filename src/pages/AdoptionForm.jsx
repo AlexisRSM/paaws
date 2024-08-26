@@ -18,6 +18,8 @@ import { useState, useEffect } from 'react';
 //if we wanted we could use prop and avoid fetching
 //but when someone goes directly to link it wont work ex:bookmark the form
 function AdoptionForm() {
+  let [ show, setShow ] = useState(false)
+
   const { id } = useParams();
   //kiling bugs
   console.log("I am id useParams", id)
@@ -106,20 +108,28 @@ function AdoptionForm() {
       <Container fluid>
         <Row>
           <Col lg="6">
-            <Card style={{ width: "60%", margin: "auto", marginTop: "1rem" }}>
+            <Card style={{ width: "65%", height: "22vh",margin: "auto", marginTop: "2rem", paddingTop: "1rem" }}>
               <Card.Body>
                 <Card.Title>{animal.name}</Card.Title>
-                <Card.Text>ID: {animal.id}</Card.Text>
-                <Button variant="primary">More</Button>
+                <Card.Text>ID: <br/> {animal.id}</Card.Text>
+                <Button variant="primary">
+                  <Link to={`/animalpage/${animal.id}`} style={{ color: "white", textDecoration: "none" }}>
+                    More
+                  </Link>
+                </Button>
               </Card.Body>
             </Card>
           </Col>
           <Col lg="6">
-            <Card style={{ width: "60%", margin: "auto", marginTop: "1rem" }}>
+            <Card style={{ width: "65%", height: "22vh", margin: "auto", marginTop: "2rem", paddingTop: "1rem" }}>
               <Card.Body>
                 <Card.Title>{formData.first_name} {formData.last_name}</Card.Title>
                 <Card.Text>Email: {formData.email}</Card.Text>
-                <Button variant="primary">Profile</Button>
+                <Button variant="primary">
+                  <Link to="/userprofile" style={{ color: "white", textDecoration: "none" }}>
+                    Profile
+                  </Link>
+                </Button>
               </Card.Body>
             </Card>
           </Col>
@@ -135,58 +145,77 @@ function AdoptionForm() {
           />
         </Form>
 
-        <Form onSubmit={handleSubmit}>
-          <Form.Group className="m-3" controlId="formBasicPhone">
-            <Form.Label>Phone number</Form.Label>
-            <Form.Control
-              type="tel"
-              name="phone_number"
-              value={formData.phone_number}
-              onChange={handleChange}
-              placeholder="Enter phone number"
-              required
-            />
-          </Form.Group>
+        <Form onSubmit={handleSubmit} style={{ width: "85%", margin: "auto", marginTop: "1rem"}}>
+          <div style={{ display: "flex" }}>
+            <Form.Group className="m-3" controlId="formBasicPhone" style={{ width: "50%" }}>
+              <Form.Label>Phone number</Form.Label>
+              <Form.Control
+                type="tel"
+                name="phone_number"
+                value={formData.phone_number}
+                onChange={handleChange}
+                placeholder="Enter phone number"
+                required
+              />
+            </Form.Group>
 
-          <Form.Group className="m-3" controlId="formFirstTimeAdopting">
-            <Form.Label>Is this your first time having a pet?</Form.Label>
-            <Form.Control
-              type="text"
-              name="first_time_adopting"
-              value={formData.first_time_adopting}
-              onChange={handleChange}
-              placeholder="Enter your answer"
-              required
-            />
-          </Form.Group>
+            <Form.Group className="m-3" controlId="formFirstTimeAdopting" style={{ width: "50%" }}>
+              <Form.Label>Is this your first time having a pet?</Form.Label>
+              <Form.Control as="select"
+                name="first_time_adopting"
+                value={formData.first_time_adopting}
+                onChange={handleChange}
+                placeholder="Select your answer"
+                required
+              >
+              <option value=""
+              onChange={() => setShow(false)}>
+                Select your answer
+              </option>
+              <option value="Yes" 
+              onChange={() => setShow(false)}>
+                Yes
+              </option>
+              <option value="No"
+              onChange={() => setShow(true)}>
+                No
+              </option>
+              </Form.Control>
+            </Form.Group>
+          </div>
 
-          <Form.Group className="m-3" controlId="formAlreadyHavePets">
-            <Form.Label>Do you already have any pets currently?</Form.Label>
-            <Form.Control
-              type="text"
-              name="already_have_pets"
-              value={formData.already_have_pets}
-              onChange={handleChange}
-              placeholder="Enter your answer"
-              required
-            />
-          </Form.Group>
+          {/* Not working yet - BF */}
+          { show === true && (
+            <div className="dependentQuestions">
+            <Form.Group className="m-3" controlId="formAlreadyHavePets">
+              <Form.Label>Do you already have any pets currently? If so, how many?</Form.Label>
+              <Form.Control
+                type="text"
+                name="already_have_pets"
+                value={formData.already_have_pets}
+                onChange={handleChange}
+                placeholder="Enter your answer"
+                required
+              />
+            </Form.Group>
 
-          <Form.Group className="m-3" controlId="formCurrentPetsDescription">
-            <Form.Label>Please describe your current pets in detail.</Form.Label>
-            <Form.Control
-              type="text"
-              name="current_pets_description"
-              value={formData.current_pets_description}
-              onChange={handleChange}
-              placeholder="Enter your answer"
-              required
-            />
-          </Form.Group>
+            <Form.Group className="m-3" controlId="formCurrentPetsDescription">
+              <Form.Label>Please describe your current pets in detail.</Form.Label>
+              <Form.Control as="textarea"
+                type="text"
+                name="current_pets_description"
+                value={formData.current_pets_description}
+                onChange={handleChange}
+                placeholder="Enter your answer"
+                required
+              />
+            </Form.Group>
+          </div>
+            ) }
 
           <Form.Group className="m-3" controlId="formInterestReason">
             <Form.Label>Why are you interested in this particular animal?</Form.Label>
-            <Form.Control
+            <Form.Control as="textarea"
               type="text"
               name="interest_reason"
               value={formData.interest_reason}
@@ -198,7 +227,7 @@ function AdoptionForm() {
 
           <Form.Group className="m-3" controlId="formMetAnimal">
             <Form.Label>Do you plan to meet this animal before the adoption or have you already met them?</Form.Label>
-            <Form.Control
+            <Form.Control as="textarea"
               type="text"
               name="met_animal"
               value={formData.met_animal}
@@ -210,7 +239,7 @@ function AdoptionForm() {
 
           <Form.Group className="m-3" controlId="formSpaceForPlay">
             <Form.Label>Will the animal have space to play/be entertained?</Form.Label>
-            <Form.Control
+            <Form.Control as="textarea"
               type="text"
               name="space_for_play"
               value={formData.space_for_play}
@@ -222,7 +251,7 @@ function AdoptionForm() {
 
           <Form.Group className="m-3" controlId="formVetBills">
             <Form.Label>Will you be able to front initial vet bills, like neutering, as per the shelter's stipulations?</Form.Label>
-            <Form.Control
+            <Form.Control as="textarea"
               type="text"
               name="able_to_front_vet_bills"
               value={formData.able_to_front_vet_bills}

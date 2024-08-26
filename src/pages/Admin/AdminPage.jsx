@@ -8,7 +8,7 @@ import Button  from "react-bootstrap/Button";
 function AdminPage() {
     return ( <>
         <Row >
-            <Col lg="6" >
+            <Col lg="4" >
                 <Card style={{ width: "18rem", height: "14rem"}}>
                 <Card.Body>
                     <Card.Title>Add animal</Card.Title>
@@ -19,31 +19,18 @@ function AdminPage() {
                 </Card.Body>
                 </Card>            
             </Col>
-            <Col lg="6">
+            <Col lg="4" >
                 <Card style={{ width: "18rem", height: "14rem"}}>
                 <Card.Body>
-                    <Card.Title>Edit animal</Card.Title>
+                    <Card.Title>Edit or delete animal</Card.Title>
                     <Card.Text>
-                    Form to edit existing animal.
+                    Form to edit or delete an animal from the API.
                     </Card.Text>
-                    <Button href="/adminedit">Edit</Button>
+                    <Button href="/admindelete">Edit</Button>
                 </Card.Body>
                 </Card>            
             </Col>
-        </Row>
-        <Row >
-            <Col lg="6" >
-                <Card style={{ width: "18rem", height: "14rem"}}>
-                <Card.Body>
-                    <Card.Title>Delete animal</Card.Title>
-                    <Card.Text>
-                    Form to delete an animal from the API.
-                    </Card.Text>
-                    <Button href="/admindelete">Delete</Button>
-                </Card.Body>
-                </Card>            
-            </Col>
-            <Col lg="6">
+            <Col lg="4">
                 <Card style={{ width: "18rem", height: "14rem"}}>
                 <Card.Body>
                     <Card.Title>Edit adoption status</Card.Title>

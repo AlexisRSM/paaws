@@ -9,11 +9,10 @@ import { useAPI } from '../Context/Context';
 
 function AdminEdit() {
   const location = useLocation();
-  /* const history = useHistory(); */
   const { animalData } = location.state || {};
   console.log("Received animalData:", animalData);
 
-  const { deleteImage } = useAPI();
+  const { deleteImage, updateAnimal } = useAPI();
 
   const [isLoading, setIsLoading] = useState(false);
   const [formData, setFormData] = useState({
@@ -27,7 +26,8 @@ function AdminEdit() {
     location: '',
     known_illness: '',
     description: '',
-    images: [], // Stores carousel images
+    images: [],
+    newImages: []
   });
 
   useEffect(() => {
@@ -44,6 +44,7 @@ function AdminEdit() {
         known_illness: animalData.known_illness || '',
         description: animalData.description || '',
         images: animalData.images || [],
+        newImages: []
       });
     }
   }, [animalData]);
@@ -53,41 +54,66 @@ function AdminEdit() {
     if (type === 'file') {
       setFormData({
         ...formData,
-        [name]: files[0],
+        newImages: Array.from(files),
       });
     } else {
       setFormData({
         ...formData,
-        [name]: value,
+        [name]: value || '',
       });
     }
   };
 
   const handleImageDelete = async (imageId) => {
     setIsLoading(true);
-
     try {
       await deleteImage(imageId);
-
-      // Update the formData state to remove the deleted image from the local UI
       const updatedImages = formData.images.filter((image) => image.id !== imageId);
-
       setFormData((prevData) => ({
         ...prevData,
         images: updatedImages,
       }));
-
       console.log(`Deleted image with ID: ${imageId}`);
     } finally {
       setIsLoading(false);
     }
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log('Form submitted:', formData);
-    /* history.push('/admin');  */// Redirect to another page after submission
+    setIsLoading(true);
+
+    const formDataToSend = new FormData();
+
+    // Append fields to formData
+    if (formData.name) formDataToSend.append('name', formData.name);
+    if (formData.species) formDataToSend.append('species', formData.species);
+    if (formData.gender) formDataToSend.append('gender', formData.gender);
+    if (formData.life_stage) formDataToSend.append('life_stage', formData.life_stage);
+    if (formData.weight) formDataToSend.append('weight', formData.weight);
+    if (formData.breed) formDataToSend.append('breed', formData.breed);
+    if (formData.location) formDataToSend.append('location', formData.location);
+    if (formData.known_illness) formDataToSend.append('known_illness', formData.known_illness);
+    if (formData.description) formDataToSend.append('description', formData.description);
+
+    // Append images to formData
+    formData.newImages.forEach((file) => {
+      formDataToSend.append('image', file);
+    });
+
+    try {
+      // Correct the function call by providing the right parameters
+      const updatedAnimal = await updateAnimal(formData.id, formDataToSend, formData.newImages);
+      console.log('Updated animal:', updatedAnimal);
+      // Handle success (e.g., display a success message or redirect)
+    } catch (error) {
+      console.error('Failed to update animal:', error);
+      // Handle error (e.g., display an error message)
+    } finally {
+      setIsLoading(false); // Hide the loading state
+    }
   };
+
 
   return (
     <div>
@@ -243,7 +269,7 @@ function AdminEdit() {
             value={formData.location}
             onChange={handleInputChange}
           >
-            <option value="null">Choose a location</option>
+            <option value="">Choose a location</option>
             <option value="Aveiro">Aveiro</option>
             <option value="Beja">Beja</option>
             <option value="Braga">Braga</option>
@@ -304,11 +330,12 @@ function AdminEdit() {
         </Form.Group>
 
         <Form.Group className="m-3" controlId="animalImage">
-          <Form.Label>Add Image</Form.Label>
+          <Form.Label>Add Images</Form.Label>
           <Form.Control
             type="file"
             name="image"
             onChange={handleInputChange}
+            multiple
           />
         </Form.Group>
 
@@ -320,7 +347,7 @@ function AdminEdit() {
                 <Carousel.Item key={index}>
                   <img
                     className="d-block w-100"
-                    src={image.image_url} // Depends on the image object
+                    src={image.image_url}
                     alt={`Animal Image ${index + 1}`}
                     style={{ height: '300px', objectFit: 'contain' }}
                   />
@@ -328,7 +355,7 @@ function AdminEdit() {
                     <Button
                       variant="danger"
                       onClick={() => handleImageDelete(image.id)}
-                      disabled={isLoading} // Disable button while loading
+                      disabled={isLoading}
                     >
                       {isLoading ? (
                         <Spinner
@@ -349,13 +376,15 @@ function AdminEdit() {
           </Form.Group>
         )}
 
-        <Button className='m-2' variant="primary" type="submit">
-          Submit
+        <Button className='m-2' variant="primary" type="submit" disabled={isLoading}>
+          {isLoading ? 'Submitting...' : 'Submit'}
         </Button>
       </Form>
 
       <div style={{ display: "flex", justifyContent: "right" }}>
-        <Button href='/adminpage' variant="outline-secondary" >Return</Button>
+        <Button href='/adminpage' variant="outline-secondary" disabled={isLoading}>
+          Return
+        </Button>
       </div>
     </div>
   );
