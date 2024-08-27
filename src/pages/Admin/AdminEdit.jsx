@@ -9,7 +9,7 @@ import { useAPI } from '../Context/Context';
 
 function AdminEdit() {
   const location = useLocation();
-  const { animalData } = location.state || {};
+  const { animalData } = location.state || {}; // Where is this location.state coming from? Where is the info coming from? update function is working, it does get updated, but the information it returns is not updated. API returns updated info.
   console.log("Received animalData:", animalData);
 
   const { deleteImage, updateAnimal } = useAPI();
@@ -96,14 +96,15 @@ function AdminEdit() {
     if (formData.known_illness) formDataToSend.append('known_illness', formData.known_illness);
     if (formData.description) formDataToSend.append('description', formData.description);
 
+    
     // Append images to formData
     formData.newImages.forEach((file) => {
       formDataToSend.append('image', file);
     });
-
+    
     try {
       // Correct the function call by providing the right parameters
-      const updatedAnimal = await updateAnimal(formData.id, formDataToSend, formData.newImages);
+      const updatedAnimal = await updateAnimal(formData.id, formData, formData.newImages);
       console.log('Updated animal:', updatedAnimal);
       // Handle success (e.g., display a success message or redirect)
     } catch (error) {

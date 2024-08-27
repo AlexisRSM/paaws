@@ -6,7 +6,7 @@ import Navbar from 'react-bootstrap/Navbar';
 
 function Footer() {
   return (
-    <Navbar collapseOnSelect expand="lg" className="footer bg-body-tertiary" >
+    <Navbar collapseOnSelect expand="lg" className="footer" >
       <Container>
         <Navbar.Brand href="/">
           <i className="fa-solid fa-paw" />

@@ -18,8 +18,6 @@ import { useState, useEffect } from 'react';
 //if we wanted we could use prop and avoid fetching
 //but when someone goes directly to link it wont work ex:bookmark the form
 function AdoptionForm() {
-  let [ show, setShow ] = useState(false)
-
   const { id } = useParams();
   //kiling bugs
   console.log("I am id useParams", id)
@@ -103,6 +101,9 @@ function AdoptionForm() {
 
   if (!animal) return <div>Loading...</div>;
 
+
+  console.log(formData.first_time_adopting)
+
   return (
     <>
       <Container fluid>
@@ -168,16 +169,13 @@ function AdoptionForm() {
                 placeholder="Select your answer"
                 required
               >
-              <option value=""
-              onChange={() => setShow(false)}>
+              <option value="">
                 Select your answer
               </option>
-              <option value="Yes" 
-              onChange={() => setShow(false)}>
+              <option value="Yes">
                 Yes
               </option>
-              <option value="No"
-              onChange={() => setShow(true)}>
+              <option value="No">
                 No
               </option>
               </Form.Control>
@@ -185,7 +183,7 @@ function AdoptionForm() {
           </div>
 
           {/* Not working yet - BF */}
-          { show === true && (
+          {formData.first_time_adopting == "No" && (
             <div className="dependentQuestions">
             <Form.Group className="m-3" controlId="formAlreadyHavePets">
               <Form.Label>Do you already have any pets currently? If so, how many?</Form.Label>

@@ -1,7 +1,16 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 
-const CheckoutButton = () => {
+
+const CheckoutButton = ({ userinfo, animalinfo }) => {
+
+    // Ensure that userinfo and animalinfo are available
+    /*  if (!userinfo || !animalinfo) {
+        alert('User or animal information is missing.');
+        return;
+    } */
+
+    console.log("I am user info and animal info in sponsor button", userinfo, animalinfo)
     // State to hold the amount
     const [amount, setAmount] = useState('');
 
@@ -14,14 +23,20 @@ const CheckoutButton = () => {
                 return;
             }
 
-            const response = await axios.post('http://localhost:3000/create-checkout-session', {
-                amount: validAmount,  // Sending amount to the backend
-                user_id: '11',
-                animal_id: '30',
-                sponsorship_amount: '30',
-                sponsorship_date: 26082024
+            // Ensure userinfo and animalinfo are provided
+            if (!userinfo || !animalinfo) {
+                alert('User or animal information is missing.');
+                return;
+            }
+
+            // Send the request to your backend
+            const response = await axios.post('https://961mfdzq-3000.uks1.devtunnels.ms/create-checkout-session', {
+                amount: validAmount,
+                user_id: userinfo.id,  // Assuming userinfo has an 'id' property
+                animal_id: animalinfo.id  // Assuming animalinfo has an 'id' property
             });
-            console.log("I am data in button checkout", response.data.url);
+
+            console.log("Checkout session URL:", response.data.url);
             window.location.href = response.data.url; // Redirect to Stripe's hosted checkout page
         } catch (error) {
             console.error('Error:', error);

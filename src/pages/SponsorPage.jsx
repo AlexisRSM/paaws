@@ -5,22 +5,43 @@ import axios from 'axios';
 import { loadStripe } from '@stripe/stripe-js';
 import { useAPI } from './Context/Context';
 import CheckoutButton from '../components/CheckoutButton';
+import { Link, useParams } from 'react-router-dom';
+import { useEffect } from 'react';
+
 
 function SponsorPage() {
 
   // This is only a test page, I am already tired -RM
-
+  const { getAnimal, user } = useAPI()
+  const { id } = useParams();
+  const [animal, setAnimal] = useState(null);
+  console.log("I am user object on sponsor page", user)
   // Load your publishable key from the environment variables
   const publishableKey = import.meta.env.VITE_PUBLISHABLE_KEY;
-  const stripePromise = loadStripe('pk_test_51PpLYtIZE8iI5Xv6223PXSNVJKFJVgctliIQyi9w5fWQYFvswR6JOX8m76glrAuTMri6evVlnGOKYaa0pw69Jp4A00LvdG6UQO');
+  const stripePromise = loadStripe('publishableKey');
 
-  // Destructure the API functions and user state from the context
-  const { createOneTimePaymentSession, createSubscriptionSession, user } = useAPI();
 
   const [key, setKey] = useState('monthly');
 
+  useEffect(() => {
+    // Fetch the animal data using the id
+    const fetchAnimal = async () => {
+      try {
+        const fetchedAnimal = await getAnimal(id);
+        setAnimal(fetchedAnimal);
+      } catch (error) {
+        console.error('Error fetching animal:', error);
+      }
+    };
+
+    fetchAnimal();
+  }, [id, getAnimal]);
+
+  console.log("I am ANIMAL OBJECT AFTER FETCH in sponsor page:", animal);
+
+
   // The button component to handle Stripe payment
-  const SponsorButton = ({ animalId, amount, type }) => {
+  /* const SponsorButton = ({ animalId, amount, type }) => {
     const handleClick = async () => {
       const stripe = await stripePromise;
 
@@ -57,7 +78,7 @@ function SponsorPage() {
 
       </>
     );
-  };
+  }; */
 
   return (
     <Tabs
@@ -71,19 +92,19 @@ function SponsorPage() {
         <div style={{ padding: '1rem' }}>
           <h3>Monthly subscription</h3>
           <p>Support this animal with a monthly donation.</p>
-          <SponsorButton animalId="123" amount="10.00" type="monthly" />
+          {/*  <SponsorButton animalId="123" amount="10.00" type="monthly" /> */}
         </div>
       </Tab>
       <Tab eventKey="onetime" title="One-time">
         <div style={{ padding: '1rem' }}>
           <h3>One-time payment</h3>
           <p>Support this animal with a one-time donation.</p>
-          <SponsorButton animalId="123" amount="50.00" type="one-time" />
+          {/* <SponsorButton animalId="123" amount="50.00" type="one-time" /> */}
         </div>
 
         {/* Test */}
         <p>Test</p>
-        <CheckoutButton>!</CheckoutButton>
+        <CheckoutButton userinfo={user} animalinfo={animal} />
         <p>Test</p>
       </Tab>
     </Tabs>

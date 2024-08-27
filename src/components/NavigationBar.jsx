@@ -8,6 +8,7 @@ import { useAPI } from '../pages/Context/Context';
 import { useNavigate } from 'react-router-dom';
 
 
+
 let userIcon = <i className="fa-solid fa-user me-3" />;
 
 function NavigationBar() {
@@ -25,14 +26,14 @@ function NavigationBar() {
   };
 
   return (
-    <Navbar collapseOnSelect expand="lg" className="bg-body-tertiary" sticky="top" style={{ alignItems: 'flex-end' }}>
-      <Container>
+    <Navbar collapseOnSelect expand="lg" className="navbar" sticky="top">
+      <Container className='me-auto'>
         <Navbar.Brand href="/">
-          <i className="fa-solid fa-paw" />
+          <img src="src\images\PAAWS_transparentBG.png" alt="PAAWS" className='PAAWSLogo'/>
         </Navbar.Brand>
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
         <Navbar.Collapse id="responsive-navbar-nav">
-          <Nav className="me-auto">
+          <Nav className="me-auto" style={{ justifyContent: "center" }}>
             <Nav.Link href="/">Home</Nav.Link>
             <Nav.Link href="/ourpets">Our Pets</Nav.Link>
           </Nav>
@@ -43,7 +44,7 @@ function NavigationBar() {
               <>
                 <NavDropdown title={userIcon} id="basic-nav-dropdown">
                   <NavDropdown.Item href="/userprofile">Profile</NavDropdown.Item>
-                  <NavDropdown.Item href="/personaldata">Personal Data</NavDropdown.Item>
+                  <NavDropdown.Item href="/personaldata">Personal data</NavDropdown.Item>
                   {user.is_admin && ( // Only show Admin option if user is an admin
                     <NavDropdown.Item href="/adminpage">Admin</NavDropdown.Item>
                   )}
@@ -53,7 +54,7 @@ function NavigationBar() {
               </>
             ) : (
               // If user is not logged in
-              <Nav.Link href="/login">Log In</Nav.Link>
+              <Nav.Link href="/login">Log in</Nav.Link>
             )}
           </Nav>
         </Navbar.Collapse>

@@ -6,31 +6,78 @@
 5) branco */
 
 #root {
-  max-width: 1280px;
   margin: 0 auto;
   padding: 2rem;
   text-align: center;
+  font-family: "Century Gothic";
 }
 
 body {
-  margin: 0;
   position: relative;
   min-height: 100vh;
 }
 
-/* home page */
+/* navbar */
 
-.sectionText {
-  margin-top: 1rem;
+.navbar{
+  background-color: rgb(255, 255, 255, 0.5);
+  height: 20vh;
+  padding: 2rem 0rem;
+  font-size: 20px;
+  width: 100%;
+  margin: auto;
 }
 
-.aboutUs:hover, 
-.successStories:hover, 
-.getToKnow:hover {
-  background-color: rgb(200,213,185);
-  border-bottom: lightgray solid 1px;
-  border-right: lightgray solid 1px;
-  box-shadow: 2px 2px 2px 1px rgb(0 0 0 / 20%);
+.PAAWSLogo{
+  position: relative;
+  left: 0;
+  top: 0;
+  object-fit: fill;
+  width: 50%;
+  height: 50%;
+}
+
+/* home page */
+
+.homeBanner {
+  margin-bottom: 5rem;
+}
+
+.pawprints {
+  position: absolute;
+  left: 10rem;
+}
+
+.sectionText {
+  margin-top: 3rem;
+}
+
+.sectionTitle {
+  font-size: 7rem;
+  line-height: 2;
+  font-weight: 800;
+  color: #36382e;
+  text-decoration: none;
+}
+
+.sectionTitle:hover,
+.sectionTitle:active {
+  color: #ffa69e;
+}
+
+.meetYourCompaawnion,
+.aboutUs {
+  text-align: right;
+  position: relative;
+}
+
+.successStories {
+  margin: 23rem 10rem ;
+  text-align: left;
+}
+
+.aboutUs {
+  margin: 15rem 0rem 20rem 0rem;
 }
 
 /* user profile */
@@ -102,7 +149,7 @@ body {
 /* footer */
 
 .footer {
-  position: relative;
+  position: absolute;
   bottom: 0;
   width: 100%;
   margin-top: 2.5rem;

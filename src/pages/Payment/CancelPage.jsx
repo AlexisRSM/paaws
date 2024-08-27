@@ -10,5 +10,5 @@ const CancelPage = () => {
         </>
     );
 }
-
+//do not delete its for stripe
 export default CancelPage;

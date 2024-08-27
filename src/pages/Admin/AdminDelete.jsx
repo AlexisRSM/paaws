@@ -96,9 +96,9 @@ function AdminDelete() {
                 <p>Weight: {animalData.weight}</p>
                 <p>Breed: {animalData.breed}</p>
                 <p>Location: {animalData.location}</p> {/* fixed */}
-                <p>Known illnesses: {animalData.known_illness}</p>
-                <p>Adoption status: {animalData.adoption_status}</p>
-                <p>Description: {animalData.description}</p>
+                <p>Known illnesses: {animalData.known_illness || 'NA'}</p>
+                <p>Adoption status: {animalData.adoption_status || 'NA'}</p>
+                <p>Description: {animalData.description || 'NA'}</p>
               </div>
             </div>
           </div>
