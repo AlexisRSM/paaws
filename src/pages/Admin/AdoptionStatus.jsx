@@ -72,7 +72,7 @@ function AdoptionStatus() {
 
       {!loading && (
         <div style={{ display: "flex", justifyContent: "right" }}>
-          <Button href='/adminpage' variant="outline-secondary">Return</Button>
+          <Button href='/adminpage' className="tertiaryButton">Return</Button>
         </div>
       )}
     </>

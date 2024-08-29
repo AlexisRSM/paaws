@@ -26,23 +26,23 @@ function NavigationBar() {
   };
 
   return (
-    <Navbar collapseOnSelect expand="lg" className="navbar" sticky="top">
-      <Container className='me-auto'>
-        <Navbar.Brand href="/">
-          <img src="src\images\PAAWS_transparentBG.png" alt="PAAWS" className='PAAWSLogo'/>
-        </Navbar.Brand>
+    <Navbar collapseOnSelect expand="lg " className="navbar p-0" sticky="top">
+      <Container className="navbarContainer " href="/" fluid>
+          <img src="src\images\PAAWS_transparentBG.png" alt="PAAWS" className='PAAWSLogo' />
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
         <Navbar.Collapse id="responsive-navbar-nav">
-          <Nav className="me-auto" style={{ justifyContent: "center" }}>
-            <Nav.Link href="/">Home</Nav.Link>
-            <Nav.Link href="/ourpets">Our Pets</Nav.Link>
+          <Nav className="me-auto centerNavBar justifyContentBetween" style={{ justifyContent: "center" }}>
+            <Nav.Link href="/" className='navbarItem mx-2'>Home</Nav.Link>
+            <Nav.Link href="/ourpets" className='navbarItem mx-2'>Our Pets</Nav.Link>
+            <Nav.Link href="/aboutus" className='navbarItem mx-2'>About Us</Nav.Link>
+            <Nav.Link href="/successstories" className='navbarItem mx-2'>Success Stories</Nav.Link>
           </Nav>
 
-          <Nav>
+          <Nav className='navbarRight '>
             {user ? (
               // If user is logged in
               <>
-                <NavDropdown title={userIcon} id="basic-nav-dropdown">
+                <NavDropdown title={userIcon} id="basic-nav-dropdown" className='navbarRight' >
                   <NavDropdown.Item href="/userprofile">Profile</NavDropdown.Item>
                   <NavDropdown.Item href="/personaldata">Personal data</NavDropdown.Item>
                   {user.is_admin && ( // Only show Admin option if user is an admin
@@ -54,7 +54,9 @@ function NavigationBar() {
               </>
             ) : (
               // If user is not logged in
-              <Nav.Link href="/login">Log in</Nav.Link>
+              <Nav.Link href="/login" className='login'>
+                Log in
+              </Nav.Link>
             )}
           </Nav>
         </Navbar.Collapse>

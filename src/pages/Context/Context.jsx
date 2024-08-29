@@ -11,8 +11,14 @@ export const APIProvider = ({ children }) => {
     const [user, setUser] = useState(null);
     const [token, setToken] = useState(null);
 
+    const url = `https://961mfdzq-3000.uks1.devtunnels.ms`; //url to change api rquests -RM
+    
     const api = axios.create({
-        baseURL: 'https://961mfdzq-3000.uks1.devtunnels.ms', // Replace with your API base URL "Porta"
+        /*  baseURL: 'https://961mfdzq-3000.uks1.devtunnels.ms', // Replace with your API base URL "Porta" */
+        /* baseURL: 'https://solid-couscous-wr9p957994vh9jp5-3000.app.github.dev', // Link codespaces espero que nao falhe */
+
+        baseURL: `${url}`, // Link codespaces espero que nao falhe
+
         headers: {
             'Content-Type': 'application/json',
             Authorization: `Bearer ${token}`,
@@ -439,6 +445,7 @@ export const APIProvider = ({ children }) => {
             value={{
                 user,
                 token,
+                url,
                 registerUser,
                 loginUser,
                 logoutUser,

@@ -24,5 +24,5 @@ const SuccessPage = () => {
         </div>
     );
 }
-//do not delete this its for stripe
+//do not delete this its for stripe DO not delete!
 export default SuccessPage;

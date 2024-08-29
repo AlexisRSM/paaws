@@ -1,15 +1,15 @@
 /* palete:
 1) verde claro (6bffb8) --> aquamarine
-2) verde mais escuro (2ceaa3) --> also aquamarine
+2) verde mais escuro (2AD897) --> also aquamarine
 3) rosa (para destaques) (ffa69e) --> melon
+3.5) rosa mais claro (ffc1bb)
 4) preto (36382e) --> black olive
 5) branco */
 
 #root {
   margin: 0 auto;
-  padding: 2rem;
   text-align: center;
-  font-family: "Century Gothic";
+  font-family: "Century Gothic", CenturyGothic, AppleGothic, sans-serif;
 }
 
 body {
@@ -17,27 +17,130 @@ body {
   min-height: 100vh;
 }
 
+/* GENERAL STYLES */
+
+a {
+  color: #36382e;
+  text-decoration: none;
+}
+
+a:hover,
+a:active {
+  color: white;
+  text-decoration: none;
+}
+
+.primaryButton {
+  background-color: #6bffb8;
+  border-color: #6bffb8;
+  color:#36382e;
+  padding: 1rem;
+}
+
+.primaryButton:hover,
+.primaryButton:active
+{
+  background-color: #2AD897 !important;
+  border-color: #2AD897 !important;
+  color: white;
+}
+
+.secondaryButton {
+  background-color: white;
+  border-color: #ffa69e;
+  color:#ffa69e;
+  padding: 1rem;
+}
+
+.secondaryButton:hover,
+.secondaryButton:active
+{
+  background-color: #ffa69e !important;
+  border-color: #ffa69e !important;
+  color: white;
+}
+
+.tertiaryButton {
+  background-color: white;
+  border-color: #36382e;
+  margin-top: 1em;
+  color:#36382e;
+  padding: 1rem;
+}
+
+.tertiaryButton:hover,
+.tertiaryButton:active
+{
+  background-color: #36382e !important;
+  border-color: #36382e !important;
+}
+
 /* navbar */
 
 .navbar{
   background-color: rgb(255, 255, 255, 0.5);
-  height: 20vh;
-  padding: 2rem 0rem;
-  font-size: 20px;
-  width: 100%;
+  height: 15vh;
+  font-size: 1.5em;
+  -webkit-backdrop-filter: blur(8px);
+  backdrop-filter: blur(8px);
+}
+
+.centerNavBar {
   margin: auto;
+  text-align: center;
+  justify-content: center;
+}
+
+.navbarItem:hover {
+  text-decoration: underline;
+  text-underline-offset: 15px;
 }
 
 .PAAWSLogo{
-  position: relative;
+  width: 20%;
+  height: 20%;
+}
+
+/* this should only happen when collapsed, there is still some overlap with regular navbar blur */
+/* .centerNavBar {
+  background-color: rgb(255, 255, 255, 0.5);
+  -webkit-backdrop-filter: blur(8px);
+  backdrop-filter: blur(8px);
+}
+
+.navbarRight {
+  background-color: rgb(255, 255, 255, 0.5);
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+  -webkit-backdrop-filter: blur(8px);
+  backdrop-filter: blur(8px);
+} */
+
+/* footer */
+
+.footer {
+  bottom: 0;
   left: 0;
-  top: 0;
-  object-fit: fill;
-  width: 50%;
-  height: 50%;
+  width: 100%;
+  margin-top: 2.5rem;
+}
+
+.footerImg {
+  width: 100%;
+  position: absolute;
+}
+
+.footerItems {
+  color: white;
+  bottom: 0;
 }
 
 /* home page */
+
+.homeSections {
+  width: 100%;
+  height: auto;
+}
 
 .homeBanner {
   margin-bottom: 5rem;
@@ -45,16 +148,18 @@ body {
 
 .pawprints {
   position: absolute;
-  left: 10rem;
+  left: 2em;
 }
 
 .sectionText {
-  margin-top: 3rem;
+  height: 100vh;
+  padding-top: 20vh;
+  position: relative;
 }
 
 .sectionTitle {
-  font-size: 7rem;
-  line-height: 2;
+  font-size: clamp(7vw, 5vw, 3rem);
+  line-height: 1.5;
   font-weight: 800;
   color: #36382e;
   text-decoration: none;
@@ -66,19 +171,198 @@ body {
 }
 
 .meetYourCompaawnion,
-.aboutUs {
+.successStories {
   text-align: right;
   position: relative;
-}
-
-.successStories {
-  margin: 23rem 10rem ;
-  text-align: left;
+  padding-right: 2em;
 }
 
 .aboutUs {
-  margin: 15rem 0rem 20rem 0rem;
+  text-align: left;
+  position: relative;
+  padding-left: 2em;
 }
+
+/* about us & success stories */
+
+.aboutUsPage,
+.storiesPage {
+  color: #36382e;
+}
+
+.aboutUsPage p,
+.storiesPage p {
+  font-size: 18px;
+  line-height: 1.75;
+  margin-top: 1rem;
+}
+
+.aboutUsHeader,
+.storiesHeader {
+  width: 100%;
+  height: 30%;
+  padding-top: 2em;
+  text-align: center;
+  font-size: 40px;
+  color: white;
+}
+
+.aboutUsHeader {
+  background-color: #6bffb8;
+}
+
+.storiesHeader {
+  background-color: #ffa69e;
+}
+
+.aboutUsText,
+.storiesText {
+  font-size: 25px;
+  padding: 0.5em 1em 2em 1em;
+}
+
+.aboutUsDesc,
+.motivationText,
+.storiesDesc,
+.storiesConclusion {
+  margin: 4em 5em;
+  text-align: justify;
+}
+
+.motivationTitle {
+  text-decoration: underline;
+  text-underline-offset: 15px;
+  text-decoration-color: #2AD897;
+}
+
+.ourStory {
+  background-color: #ffa69e;
+  padding: 5em;
+}
+
+.ourStoryText,
+.ourMissionText,
+.storyText {
+  text-align: justify;
+}
+
+.ourStoryTitle,
+.ourMissionTitle,
+.motivationTitle {
+  margin-bottom: 1.5em;
+}
+
+.ourMission {
+  padding: 5em;
+  background-color: #ffc1bb;
+}
+
+.aboutUsDoubleSec {
+  margin-bottom: 7em;
+}
+
+.howItWorks {
+  height: 30vh;
+  text-align: middle;
+}
+
+.howItWorksHeader {
+  background-color: #2AD897;
+  padding: 5em;
+}
+
+.howItWorksTitle{
+  line-height: 1.75;
+}
+
+.howItWorksOne {
+  background-color: #4ceca9;
+  padding: 5em;
+}
+
+.howItWorksTwo {
+  background-color: #6bffb8;
+  padding: 5em;
+}
+
+.howItWorksThree {
+  background-color: #a9ffd6;
+  padding: 5em;
+}
+
+.callToAction {
+  margin: 12em 0em 4em 0em;
+
+}
+
+.callToActionTitle {
+  margin-bottom: 1em;
+}
+
+.callToActionText {
+  font-size: 18px;
+  line-height: 1.75;
+  text-align: justify;
+}
+
+.contactUs {
+  background-color: #6bffb8;
+  padding: 2em;
+  text-align: center;
+}
+
+.contactUsTitle {
+  margin: 2em 0em 0em 0em;
+}
+
+.contactUsText {
+  text-align: justify;
+  padding: 2em;
+  font-size: 20px;
+  line-height: 1.75;
+}
+
+.aboutUsPaawsLogo {
+  background-color: #36382e;
+  justify-content: center;
+}
+
+.socialMediaIcons {
+  display: flex;
+  font-size: 40px;
+  padding: 0em 6em;
+  justify-content: space-between;
+}
+
+.storyOne,
+.storyTwo,
+.storyThree {
+  padding:  3em;
+}
+
+.StoryTitle {
+  padding: 1em;
+}
+
+.storyOne {
+  background-color: #3dce94;
+}
+
+.storyTwo {
+  background-color: #3ce2a1;
+}
+
+.storyThree {
+  background-color: #67e9b6;
+}
+
+.storyImg {
+  width: 100%;
+  border:#36382e solid 3px;
+  margin-bottom: 1.5em;
+}
+
+/**/
 
 /* user profile */
 
@@ -144,13 +428,4 @@ body {
   right: 0;
   bottom: 0;
   margin: 1.5rem;
-}
-
-/* footer */
-
-.footer {
-  position: absolute;
-  bottom: 0;
-  width: 100%;
-  margin-top: 2.5rem;
 }

@@ -33,7 +33,7 @@ function AdoptionCard({ process }) {
         <Card.Text>
           Adoption status: <span className=""><strong>{process.adoption_status}</strong></span>
         </Card.Text>
-        <Button variant="light">
+        <Button className='primaryButton'>
           <Link to={`/animalpage/${process.animal_id}`} state={{ animal }} style={{ color: "black", textDecoration: "none" }}>
             More
           </Link>

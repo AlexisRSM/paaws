@@ -62,12 +62,12 @@ function AdminDelete() {
               value={animalId}
               onChange={(e) => setAnimalId(e.target.value)}
             />
-            <button
-              className='btn btn-primary w-100'
+            <Button
+              className='primaryButton w-100'
               onClick={handleFetchAnimal}
             >
               Search
-            </button>
+            </Button>
           </div>
         </div>
 
@@ -104,23 +104,23 @@ function AdminDelete() {
           </div>
         )}
 
-        <div className='row justify-content-center py-2'>
+        <div className='row justify-content-center'>
           <div className='col-md-6 d-flex justify-content-between'>
-            <button
-              className='btn btn-danger py-2 px-2'
+            <Button
+              className='secondaryButton'
               onClick={handleDeleteAnimal}
-            >
+            > {/* why the heck are you so tall */}
               Delete animal
-            </button>
-            <Button href="/adminpage" variant="outline-secondary">
+            </Button>
+            <Button href="/adminpage" className='tertiaryButton'>
               Return
             </Button>
-            <button
-              className='btn btn-warning py-2 px-2'
+            <Button
+              className='tertiaryButton'
               onClick={navigateToEdit}
             >
               Want to Edit Instead?
-            </button>
+            </Button>
           </div>
         </div>
 

@@ -3,6 +3,8 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import Home from './pages/Home'
 import NavigationBar from './components/NavigationBar'
 import Footer from './components/Footer'
+import AboutUs from './pages/Fluff sections/AboutUs'
+import SuccessStories from './pages/Fluff sections/SuccessStories'
 
 import Login from './pages/Login'
 import Register from './pages/Register'
@@ -34,10 +36,12 @@ function App() {
         <NavigationBar />
         <Routes>
           <Route path="/" element={< Home />} />
+          <Route path="/aboutus" element={< AboutUs />} />
+          <Route path="/successstories" element={< SuccessStories />} />
 
           <Route path="/login" element={< Login />} /> {/* Done -RM */}
           <Route path="/register" element={< Register />} /> {/* Done -RM */}
-          <Route path="/resetpass" element={< ResetPass />} />
+          <Route path="/resetpass/:token" element={< ResetPass />} />
 
           <Route path="/userprofile" element={< UserProfile />} /> {/* Done -RM */}
           <Route path="/personaldata" element={< PersonalData />} />

@@ -15,7 +15,7 @@ function AdminPage() {
                     <Card.Text>
                     Form to add new animal to the API.
                     </Card.Text>
-                    <Button href="/adminadd">Add</Button>
+                    <Button href="/adminadd" className="primaryButton">Add</Button>
                 </Card.Body>
                 </Card>            
             </Col>
@@ -26,7 +26,7 @@ function AdminPage() {
                     <Card.Text>
                     Form to edit or delete an animal from the API.
                     </Card.Text>
-                    <Button href="/admindelete">Edit</Button>
+                    <Button href="/admindelete" className="primaryButton">Edit</Button>
                 </Card.Body>
                 </Card>            
             </Col>
@@ -37,7 +37,7 @@ function AdminPage() {
                     <Card.Text>
                     Form to edit adoption status of an animal.
                     </Card.Text>
-                    <Button href="/adoptionstatus">Edit</Button>
+                    <Button href="/adoptionstatus" className="primaryButton">Edit</Button>
                 </Card.Body>
                 </Card>            
             </Col>

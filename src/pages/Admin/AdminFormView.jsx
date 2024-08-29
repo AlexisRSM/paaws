@@ -27,11 +27,11 @@ function AdoptionFormView() {
               <Card.Body>
                 <Card.Title>Name</Card.Title>
                 <Card.Text>ID: </Card.Text>
-                <Button variant="primary">
-                  <Link to={`/animalpage/:id`} /* need to change this, but if I used ${animal.id} you wouldn't be able to see */ style={{ color: "white", textDecoration: "none" }}>
+                <Link to={`/animalpage/:id`} /* need to change this, but if I used ${animal.id} you wouldn't be able to see */ >
+                  <Button className='primaryButton'>
                     More
-                  </Link>
-                </Button>
+                  </Button>
+                </Link>
               </Card.Body>
             </Card>
           </Col>
@@ -40,11 +40,11 @@ function AdoptionFormView() {
               <Card.Body>
                 <Card.Title>Full name</Card.Title>
                 <Card.Text>Email: </Card.Text>
-                <Button variant="primary">
-                  <Link to="/userprofile" style={{ color: "white", textDecoration: "none" }}>
+                <Link to="/userprofile" >
+                  <Button className='primaryButton'>
                     Profile
-                  </Link>
-                </Button>
+                  </Button>
+                </Link>
               </Card.Body>
             </Card>
           </Col>
@@ -93,11 +93,11 @@ function AdoptionFormView() {
             <p className='answer'>{/* answer */}</p>
           </div>
 
-          <Button variant="outline-secondary">
-            <Link to="/adoptionstatus" style={{ color: "grey",  textDecoration: "none" }}>
-            Return
-            </Link>
-          </Button>
+          <Link to="/adoptionstatus">
+            <Button className='tertiaryButton'>
+                Return
+            </Button>
+          </Link>
         </Card>
       </Container>
     </>

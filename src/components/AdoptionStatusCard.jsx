@@ -21,11 +21,17 @@ const AdoptionStatusCard = ({ adoption, onApprove, onReject, onViewForm }) => {
         </Card.Text>
         <Card.Text>Status: {adoption.adoption_status}</Card.Text>
         <div style={{ display: "flex", justifyContent: "space-between" }}>
-          <Button variant="success" onClick={onApprove}>Approve</Button>
-          <Button variant="danger" onClick={onReject}>Reject</Button>
-          <Button variant="warning" onClick={onViewForm}>
-            <Link to={`/adoptionform_adminview/${adoption.id}`} style={{ color: "white", textDecoration: "none" }}>+</Link>
+          <Button className='primaryButton' onClick={onApprove}>
+            <i class="fa-solid fa-check"/>
           </Button>
+          <Button className='secondaryButton' onClick={onReject}>
+            <i class="fa-solid fa-x"/>
+          </Button>
+          <Link to={`/adoptionform_adminview/${adoption.id}`} >
+          <Button className='tertiaryButton' onClick={onViewForm} >
+              <i class="fa-solid fa-plus"/>
+          </Button>
+          </Link>
         </div>
       </Card.Body>
     </Card>

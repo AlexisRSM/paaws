@@ -5,6 +5,7 @@ import './css components/styles.css'
 import App from './App.jsx'
 import './index.css'
 import { APIProvider } from './pages/Context/Context.jsx'
+import Swal from 'sweetalert2'
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>

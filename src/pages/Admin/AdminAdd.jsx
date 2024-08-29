@@ -331,7 +331,7 @@ function AdminAdd() {
         />
       </Form.Group>
 
-      <Button className='m-2' variant="primary" type="submit" disabled={loading}>
+      <Button className='m-2 primaryButton' type="submit" disabled={loading}>
         {loading ? (
           <>
             <Spinner
@@ -346,7 +346,7 @@ function AdminAdd() {
           'Submit'
         )}
       </Button>
-      <Button href='/adminpage' variant="outline-secondary" className="m-2" disabled={loading}>
+      <Button href='/adminpage' className="m-2 tertiaryButton" disabled={loading}>
         Return
       </Button>
     </Form>

@@ -107,7 +107,7 @@ function AnimalSearch() {
                     </div>
                     {loading ? ( // Display loading GIF while it fetches
                         <div className="loading-container">
-                            <img src="/src/images/gifs/loading_cato.gif" alt="Loading..." />
+                            <img src="/src/images/gifs/thirdloadingcat.gif" alt="Loading..." />
                         </div>
                     ) : (
                         <Row>

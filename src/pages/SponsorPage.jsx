@@ -21,7 +21,7 @@ function SponsorPage() {
   const stripePromise = loadStripe('publishableKey');
 
 
-  const [key, setKey] = useState('monthly');
+  const [key, setKey] = useState('subscription');
 
   useEffect(() => {
     // Fetch the animal data using the id
@@ -39,47 +39,6 @@ function SponsorPage() {
 
   console.log("I am ANIMAL OBJECT AFTER FETCH in sponsor page:", animal);
 
-
-  // The button component to handle Stripe payment
-  /* const SponsorButton = ({ animalId, amount, type }) => {
-    const handleClick = async () => {
-      const stripe = await stripePromise;
-
-
-      try {
-
-        // Use the context function to create a Stripe session
-        const response = type === 'one-time'
-          ? await createOneTimePaymentSession({ animal_id: animalId, sponsorship_amount: amount })
-          : await createSubscriptionSession({ animal_id: animalId, sponsorship_amount: amount });
-
-        const sessionId = response.sessionId;
-        console.log("sessionid", sessionId)
-
-        // Redirect to Stripe Checkout
-        const { error } = await stripe.redirectToCheckout({
-          sessionId: sessionId,
-        });
-
-        if (error) {
-          console.error('Stripe error:', error);
-        }
-      } catch (error) {
-        console.error('Error creating Stripe session:', error);
-      }
-    };
-
-    return (
-      <>
-
-        <button onClick={handleClick}>
-          {type === 'one-time' ? 'Sponsor Once' : 'Sponsor Monthly'}
-        </button>
-
-      </>
-    );
-  }; */
-
   return (
     <Tabs
       style={{ justifyContent: "center", marginTop: "2rem" }}
@@ -88,24 +47,19 @@ function SponsorPage() {
       onSelect={(k) => setKey(k)}
       className="mb-3"
     >
-      <Tab eventKey="monthly" title="Monthly">
+      <Tab eventKey="subscription" title="Monthly">
         <div style={{ padding: '1rem' }}>
           <h3>Monthly subscription</h3>
           <p>Support this animal with a monthly donation.</p>
-          {/*  <SponsorButton animalId="123" amount="10.00" type="monthly" /> */}
+          <CheckoutButton userinfo={user} animalinfo={animal} typeOfSponsorship={key} />
         </div>
       </Tab>
-      <Tab eventKey="onetime" title="One-time">
+      <Tab eventKey="checkout" title="One-time">
         <div style={{ padding: '1rem' }}>
           <h3>One-time payment</h3>
           <p>Support this animal with a one-time donation.</p>
-          {/* <SponsorButton animalId="123" amount="50.00" type="one-time" /> */}
+          <CheckoutButton userinfo={user} animalinfo={animal} typeOfSponsorship={key} />
         </div>
-
-        {/* Test */}
-        <p>Test</p>
-        <CheckoutButton userinfo={user} animalinfo={animal} />
-        <p>Test</p>
       </Tab>
     </Tabs>
   );

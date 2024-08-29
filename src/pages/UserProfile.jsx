@@ -6,13 +6,14 @@
 
 // In case we have time, add user milestones
 
-// Add money spent in sponserships and how much they'll spend this month
+// Add money spent in sponserships and how much they'll spend this month ----maybe not for presentation or just money contributed for each
 
 import AdoptionCard from "../components/AdoptionCard";
 import SponsoredCard from "../components/SponsoredCard";
 //Added by RM
 import React, { useEffect, useState } from 'react';
 import { useAPI } from '../pages/Context/Context';
+import newloadingcato from '../images/gifs/newloadingcato.gif'
 
 //omfg You have no idea it took me like 4 hrs--- 🥲 its working
 //missing check when have connections in db sponsored and adoption processes
@@ -30,8 +31,37 @@ function UserProfile() {
             try {
                 const profileData = await get_user_profile();
                 console.log("I am User Profile page printing profileData", profileData)
-                setSponsoredPets(profileData.sponsored_pets || []); // Returned by serialize of API
-                setAdoptionProcesses(profileData.adoptions || []); // Returned by serialize of API
+                // Remove duplicate sponsored pets by their ID
+                // Create a map to sum sponsorship amounts by animal_id
+                const sponsorshipMap = profileData.sponsored_pets.reduce((map, pet) => {
+                    const { animal_id, sponsorship_amount } = pet;
+                    const amount = parseFloat(sponsorship_amount);
+
+                    if (map.has(animal_id)) {
+                        // If the animal_id already exists, add the current amount to the total
+                        map.set(animal_id, {
+                            ...map.get(animal_id),
+                            total_sponsorship_amount: map.get(animal_id).total_sponsorship_amount + amount,
+                        });
+                    } else {
+                        // If the animal_id doesn't exist, set it with the current amount
+                        map.set(animal_id, {
+                            ...pet,
+                            total_sponsorship_amount: amount,
+                        });
+                    }
+
+                    return map;
+                }, new Map());
+
+                // Convert the map values to an array
+                const uniqueSponsoredPets = Array.from(sponsorshipMap.values());
+
+                // Log the uniqueSponsoredPets array for debugging
+                console.log("Unique Sponsored Pets:", uniqueSponsoredPets);
+
+                setSponsoredPets(uniqueSponsoredPets); // Set the filtered and summed pets
+                setAdoptionProcesses(profileData.adoptions || []); // Set the adoption processes
             } catch (error) {
                 console.error("Failed to fetch profile data:", error);
             } finally {
@@ -45,7 +75,9 @@ function UserProfile() {
 
     // Display loading message while fetching
     if (loading) {
-        return <div>Loading...</div>;
+        return <div>
+            <img src={newloadingcato}></img>
+        </div>;
     }
 
     return (

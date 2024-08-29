@@ -49,6 +49,7 @@ function PersonalData() {
       try {
         await updateUserInfo(formData);
         setIsSubmitted(true);
+        alert("Updated successfully!")
       } catch (error) {
         console.error('Failed to update user info:', error);
       } finally {
@@ -71,10 +72,11 @@ function PersonalData() {
     }
   };
 
-  const handleReturn = () => {
+// I think this is unnecessary since Home is right there in the navbar, and we already have two buttons on this page, it'll get too crowded
+/*   const handleReturn = () => {
     navigate('/');
   };
-
+ */
   if (!user) {
     return (
       <div className="d-flex justify-content-center align-items-center" style={{ height: '100vh' }}>
@@ -130,22 +132,22 @@ function PersonalData() {
           />
         </Form.Group>
 
-        <Button className="m-2" variant="primary" type="submit" disabled={isLoading || isSubmitted}>
+        <Button className="primaryButton m-2" type="submit" disabled={isLoading || isSubmitted}>
           {isLoading ? <Spinner animation="border" size="sm" /> : 'Save'}
         </Button>
 
-        <Button className="m-2" variant="secondary" onClick={handleReturn}>
+{/*         <Button className="tertiaryButton m-2" onClick={handleReturn}>
           Return Home
-        </Button>
+        </Button> */}
       </Form>
 
       <div className="mt-3">
-        <Button variant="danger" onClick={handleDelete} disabled={isDeleting}>
+        <Button className='secondaryButton' onClick={handleDelete} disabled={isDeleting}>
           {isDeleting ? <Spinner animation="border" size="sm" /> : 'Delete Account'}
         </Button>
       </div>
     </>
   );
-  //this is a change to solve a commit issuesas
+  //this is a change to solve a commit issues
 }
 export default PersonalData;

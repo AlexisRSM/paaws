@@ -354,7 +354,7 @@ function AdminEdit() {
                   />
                   <Carousel.Caption>
                     <Button
-                      variant="danger"
+                      className='secondaryButton'
                       onClick={() => handleImageDelete(image.id)}
                       disabled={isLoading}
                     >
@@ -377,13 +377,13 @@ function AdminEdit() {
           </Form.Group>
         )}
 
-        <Button className='m-2' variant="primary" type="submit" disabled={isLoading}>
+        <Button className='m-2 primaryButton' type="submit" disabled={isLoading}>
           {isLoading ? 'Submitting...' : 'Submit'}
         </Button>
       </Form>
 
       <div style={{ display: "flex", justifyContent: "right" }}>
-        <Button href='/adminpage' variant="outline-secondary" disabled={isLoading}>
+        <Button href='/adminpage' className='tertiaryButton' disabled={isLoading}>
           Return
         </Button>
       </div>
