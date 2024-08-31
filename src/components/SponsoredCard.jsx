@@ -12,7 +12,8 @@ function SponsoredCard({ pet }) {
         <Card.Img
           variant="top"
           src={(pet.animal.images && pet.animal.images[0] && pet.animal.images[0].image_url) || 'https://cdn.britannica.com/86/166986-050-4CEFE5DE/cute-kitten-and-puppy-outdoors-in-grass.jpg'}
-          alt={pet.animal.name}
+          alt={pet.animal.name} 
+          style={{  width: "100%", height: "25vh", objectFit: "cover"}}
         />
         <Card.Body>
           <Card.Title>{pet.animal.name || 'Adorable little fluffball'}</Card.Title>

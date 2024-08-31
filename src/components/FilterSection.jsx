@@ -26,64 +26,73 @@ function FilterSection({ filters, setFilters }) {
 
 
   return (
-    <Card>
+    <Card className='filterCard'>
       <Card.Body>
-        <Card.Title>Filters</Card.Title>
+        <Card.Title><h2>Filters</h2></Card.Title>
         <ListGroup variant="flush">
           <ListGroup.Item>
-            <strong>Species</strong>
+            <p className='filterTitle'>Species</p>
+            <div className='filterItem'>
             {['cat', 'dog'].map((species) => (
               <Form.Check
-                key={species}
-                type="checkbox"
-                label={species}
-                checked={!!filters.species[species]}
-                onChange={() => handleFilterChange('species', species)}
+              key={species}
+              type="checkbox"
+              label={species}
+              checked={!!filters.species[species]}
+              onChange={() => handleFilterChange('species', species)}
+              
               />
             ))}
+            </div>
           </ListGroup.Item>
 
           <ListGroup.Item>
-            <strong>Gender</strong>
+            <p className='filterTitle'>Gender</p>
+            <div className="filterItem">
             {['female', 'male'].map((gender) => (
               <Form.Check
-                key={gender}
-                type="checkbox"
-                label={gender}
-                checked={!!filters.gender[gender]} //check double negation
-                onChange={() => handleFilterChange('gender', gender)}
+              key={gender}
+              type="checkbox"
+              label={gender}
+              checked={!!filters.gender[gender]} //check double negation
+              onChange={() => handleFilterChange('gender', gender)}
               />
             ))}
+            </div>
           </ListGroup.Item>
 
           <ListGroup.Item>
-            <strong>Life Stage</strong>
+          <p className='filterTitle'>Life Stage</p>
+          <div className="filterItem">
             {['baby', 'junior', 'adult', 'senior'].map((stage) => (
               <Form.Check
-                key={stage}
-                type="checkbox"
-                label={stage}
-                checked={!!filters.life_stage[stage]}
-                onChange={() => handleFilterChange('life_stage', stage)}
+              key={stage}
+              type="checkbox"
+              label={stage}
+              checked={!!filters.life_stage[stage]}
+              onChange={() => handleFilterChange('life_stage', stage)}
               />
             ))}
+            </div>
           </ListGroup.Item>
 
           <ListGroup.Item>
-            <strong>Known Illnesses?</strong>
+          <p className='filterTitle'>Known Illnesses?</p>
+          <div className="filterItem">
             {['yes', 'no'].map((known_illness) => (
               <Form.Check
-                key={known_illness}
-                type="checkbox"
-                label={known_illness}
-                checked={!!filters.known_illness[known_illness]}
-                onChange={() => handleFilterChange('known_illness', known_illness)}
+              key={known_illness}
+              type="checkbox"
+              label={known_illness}
+              checked={!!filters.known_illness[known_illness]}
+              onChange={() => handleFilterChange('known_illness', known_illness)}
               />
             ))}
+            </div>
           </ListGroup.Item>
 
-          <ListGroup.Item>
-            <strong>Location</strong>
+          <ListGroup.Item >
+            <p className='filterTitle'>Location</p>
             <Form.Control
               as="select"
               value={filters.location}
@@ -94,7 +103,7 @@ function FilterSection({ filters, setFilters }) {
                 }))
               }
             >
-              <option value="">Choose a location</option>
+              <option value="">Choose location</option>
               <option value="Aveiro">Aveiro</option>
               <option value="Beja">Beja</option>
               <option value="Braga">Braga</option>

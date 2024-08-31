@@ -12,7 +12,7 @@ export const APIProvider = ({ children }) => {
     const [token, setToken] = useState(null);
 
     const url = `https://961mfdzq-3000.uks1.devtunnels.ms`; //url to change api rquests -RM
-    
+
     const api = axios.create({
         /*  baseURL: 'https://961mfdzq-3000.uks1.devtunnels.ms', // Replace with your API base URL "Porta" */
         /* baseURL: 'https://solid-couscous-wr9p957994vh9jp5-3000.app.github.dev', // Link codespaces espero que nao falhe */
@@ -44,6 +44,21 @@ export const APIProvider = ({ children }) => {
     }, (error) => {
         return Promise.reject(error);
     });
+
+    //For auto log out when token expires 
+    /*     api.interceptors.response.use(
+            response => response,
+            async (error) => {
+                // Check if the error response status is 401 (Unauthorized)
+                if (error.response && error.response.status === 401) {
+                    // Call the logoutUser function to clear the session and redirect
+                    await logoutUser();
+                }
+    
+                return Promise.reject(error);
+            }
+        ); */
+
 
     //Interceptors v3
     /*    api.interceptors.response.use(
@@ -431,6 +446,17 @@ export const APIProvider = ({ children }) => {
         }
     };
 
+    const fetchAdoptionForm = async (id) => {
+        try {
+            const response = await api.get(`/adoption_form/${id}`);
+            return { data: response.data, error: null };  // Return the data if successful
+        } catch (error) {
+            // Return the error message
+            return { data: null, error: error.response ? error.response.data.error : 'Failed to fetch adoption form' };
+        }
+    };
+
+
     //Sync the token with the local storage - omg
     useEffect(() => {
         if (token) {
@@ -458,6 +484,7 @@ export const APIProvider = ({ children }) => {
                 createSubscriptionSession,
                 getAllAdoptions,
                 updateAdoptionStatus,
+                fetchAdoptionForm,
                 listAnimals,
                 getAnimal,
                 updateAnimal,

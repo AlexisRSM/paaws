@@ -27,7 +27,11 @@ function AdoptionCard({ process }) {
 
   return (
     <Card className={`card bg-${getStatusVariant(process.adoption_status)}`} text={getStatusVariant(process.adoption_status) === 'warning' ? 'dark' : 'white'}>
-      <Card.Img variant="top" src={process.animal.images[0].image_url || "https://d.newsweek.com/en/full/1898130/dog-cat-under-sheet.jpg"} alt={process.animal_name || "Adopted Pet"} />
+      <Card.Img variant="top"
+      src={process.animal.images[0].image_url || "https://d.newsweek.com/en/full/1898130/dog-cat-under-sheet.jpg"}
+      alt={process.animal_name || "Adopted Pet"} 
+      style={{  width: "100%", height: "25vh", objectFit: "cover"}}
+      />
       <Card.Body>
         <Card.Title>{process.animal.name || "Sweet baby angel"}</Card.Title>
         <Card.Text>

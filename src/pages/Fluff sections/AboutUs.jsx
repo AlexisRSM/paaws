@@ -3,15 +3,17 @@ import { Row, Col, Button, Card, Image } from "react-bootstrap";
 function AboutUs() {
     return (
     <div className="aboutUsPage">
-        <div className="aboutUsHeader">
+        <div className="pageHeader aboutUsHeader">
             <h1>About us</h1>
-            <p className="aboutUsText">Learn about our team and mission</p>
+            <p className="pageHeaderText">Learn about our team and mission</p>
         </div>
         <div className="aboutUsDesc">
             <p>
                 Welcome to <strong style={{ color: "#ffa69e"}}>PAAWS</strong>—where every animal's journey to love, care, and a forever home begins. We believe every creature deserves a second chance, and our mission is to make that a reality. However, we also understand not everyone has the means or space to welcome an animal compawnion into their home—and that's where sponsorships come in.
             </p>
         </div>
+        <div>
+
         <Row className="aboutUsDoubleSec">
             <Col lg="6" className="ourStory">
                 <h1 className="ourStoryTitle">Our story</h1>
@@ -62,9 +64,11 @@ function AboutUs() {
                 <p>Finally, fill out the adoption form or proceed to checkout in case of a sponsorhip.</p>
             </Col>
         </Row>
+        
 
         {/* this card is jumping on top of previous section in smaller viewports and ruining my blood pressure */}
-        <div className="callToAction">
+        <Row className="callToAction" >
+            <Col lg="12">
             <Card style={{ width: '35%', margin: "auto" }}>
                 <Card.Body>
                     <h1 className="callToActionTitle">Join us</h1>
@@ -74,24 +78,26 @@ function AboutUs() {
                     <Button className="primaryButton" href="/ourpets">Check out our pets</Button>
                 </Card.Body>
             </Card>
-        </div>
+            </Col>
+        </Row>
         <Row>
             <Col className="contactUs" lg="6">
                 <h1 className="contactUsTitle">
                     Contact us
                 </h1>
-                <p className="contactUsText">If you're a shelter and want to get your animals featured, or if you have any questions or concerns, please reach out through our email: <strong style={{ color: "white"}}>paaws@gmail.com</strong>.</p>
+                <p className="contactUsText">If you're a shelter and want to get your animals featured, or if you have any questions or concerns, please reach out through our email: <strong style={{ color: "white"}}>paawsforlife@gmail.com</strong>.</p>
                 <div className="socialMediaIcons">
-                    <i class="fa-brands fa-square-facebook"></i>
-                    <i class="fa-brands fa-instagram"></i>
-                    <i class="fa-brands fa-square-x-twitter"></i>
-                    <i class="fa-brands fa-tiktok"></i>
+                    <i className="fa-brands fa-square-facebook"></i>
+                    <i className="fa-brands fa-instagram"></i>
+                    <i className="fa-brands fa-square-x-twitter"></i>
+                    <i className="fa-brands fa-tiktok"></i>
                 </div>
             </Col>
             <Col className="aboutUsPaawsLogo d-flex" lg="6">
                 <Image src="src/images/PAAWS_black_and_green.png" fluid />
             </Col>
         </Row>
+        </div>
 
     </div> );
 }

@@ -34,7 +34,7 @@ const CheckoutButton = ({ userinfo, animalinfo, typeOfSponsorship }) => {
             console.log("I am type of sponsorship", typeOfSponsorship)
             // Send the request to your backend             //changed to codespaces link
 
-            
+
             const response = await axios.post(`${url}/create-${typeOfSponsorship}-session`, {
                 amount: validAmount,
                 user_id: userinfo.id,  // Assuming userinfo has an 'id' property
@@ -50,14 +50,20 @@ const CheckoutButton = ({ userinfo, animalinfo, typeOfSponsorship }) => {
     };
 
     return (
-        <div>
+        <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', marginTop: '1rem' }}>
             <input
                 type="number"
                 value={amount}
                 onChange={e => setAmount(e.target.value)}
                 placeholder="Enter amount"
+                style={{ marginBottom: '1rem', padding: '0.5rem', width: '200px', textAlign: 'center' }} // Styling input
             />
-            <button onClick={handleCheckout}>Go to Checkout</button>
+            <button className='btn primaryButton'
+                onClick={handleCheckout}
+                style={{ padding: '0.5rem 1rem', cursor: 'pointer' }} // Styling button
+            >
+                Go to Checkout
+            </button>
         </div>
     );
 }

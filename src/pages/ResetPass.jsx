@@ -18,7 +18,7 @@ function ResetPass() {
 
     // Add validation to check if passwords match
     if (password !== confirmPassword) {
-      setErrorMessage("Passwords do not match!");
+      setErrorMessage("Pawprints do not match!");
       return;
     }
 
@@ -31,7 +31,7 @@ function ResetPass() {
       });
 
       // Handle success (e.g., show a success message, redirect the user, etc.)
-      alert("Your password has been reset successfully!");
+      alert("Your pawprint has been reset successfully!");
     } catch (error) {
       // Handle errors (e.g., display an error message)
       setErrorMessage(error.response?.data?.message || "Something went wrong. Please try again.");

@@ -6,6 +6,8 @@ import Button from 'react-bootstrap/Button';
 import { useNavigate } from 'react-router-dom';
 //maybe change input text to center later
 //its working missing to lock routes 
+import Swal from 'sweetalert2';
+
 
 function AdminDelete() {
   const [animalId, setAnimalId] = useState('');
@@ -35,9 +37,21 @@ function AdminDelete() {
         await deleteAnimal(animalId);
         setAnimalData(null);
         setError('');
-        alert(`Animal with ID ${animalId} deleted successfully.`);
+        /* alert(`Animal with ID ${animalId} deleted successfully.`); */
+        Swal.fire({
+          title: "Animal Deleted!",
+          text: "Animal was Sucessfully deleted from database!",
+          icon: "sucess",
+          confirmButtonColor: '#2AD897',
+        });
       } catch (error) {
         setError(`Error deleting animal with ID ${animalId}: ${error.message}`);
+        Swal.fire({
+          title: "ERROR!",
+          text: `Animal Refused to leave the database please try again! ERROR CODE:${error.message}`,
+          icon: "error",
+          confirmButtonColor: '#2AD897',
+        });
       }
     }
   };
@@ -46,7 +60,13 @@ function AdminDelete() {
     if (animalData) {
       navigate('/adminedit', { state: { animalData } });
     } else {
-      alert('No animal data available. Please fetch an animal first.');
+      /* alert('No animal data available. Please fetch an animal first.'); */
+      Swal.fire({
+        title: "ERROR!",
+        text: `No animal data available. Please fetch an animal first.`,
+        icon: "error",
+        confirmButtonColor: '#2AD897',
+      });
     }
   };
 

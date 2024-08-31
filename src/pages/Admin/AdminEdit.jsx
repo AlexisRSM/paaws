@@ -6,6 +6,8 @@ import InputGroup from 'react-bootstrap/InputGroup';
 import Carousel from 'react-bootstrap/Carousel';
 import Spinner from 'react-bootstrap/Spinner';
 import { useAPI } from '../Context/Context';
+import Swal from 'sweetalert2';
+
 
 function AdminEdit() {
   const location = useLocation();
@@ -96,20 +98,30 @@ function AdminEdit() {
     if (formData.known_illness) formDataToSend.append('known_illness', formData.known_illness);
     if (formData.description) formDataToSend.append('description', formData.description);
 
-    
+
     // Append images to formData
     formData.newImages.forEach((file) => {
       formDataToSend.append('image', file);
     });
-    
+
     try {
       // Correct the function call by providing the right parameters
       const updatedAnimal = await updateAnimal(formData.id, formData, formData.newImages);
       console.log('Updated animal:', updatedAnimal);
-      // Handle success (e.g., display a success message or redirect)
+      // Handle success
+      Swal.fire({
+        title: "PET UPDATED!",
+        text: "Your PET data has sucessfully updated!",
+        icon: "success"
+      });
     } catch (error) {
       console.error('Failed to update animal:', error);
-      // Handle error (e.g., display an error message)
+      // Handle error 
+      Swal.fire({
+        title: "ERROR!",
+        text: "Pet did not want to be updated please try again!",
+        icon: "error"
+      });
     } finally {
       setIsLoading(false); // Hide the loading state
     }

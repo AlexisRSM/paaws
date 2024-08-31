@@ -3,7 +3,6 @@
 import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
-import Image from 'react-bootstrap/Image';
 
 function Footer() {
   return (
@@ -13,8 +12,8 @@ function Footer() {
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
         <Navbar.Collapse id="responsive-navbar-nav">
           <Nav className="me-auto footerItem ps-2">
-            <Nav.Link href="/contactus">Contact us</Nav.Link>
-            <Nav.Link href="/FAQ">FAQ</Nav.Link>
+            <Nav.Link>© All pawprints reserved by Alexis Mendes and Bárbara Ferreira</Nav.Link>
+            {/* <Nav.Link href="/FAQ">FAQ</Nav.Link> */}
           </Nav>
         </Navbar.Collapse>
       </Container>

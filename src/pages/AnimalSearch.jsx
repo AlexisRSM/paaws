@@ -1,11 +1,13 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
+import Dropdown from 'react-bootstrap/Dropdown';
 
 import FilterSection from '../components/FilterSection';
 import AnimalCard from '../components/RegularCard';
 import { useAPI } from '../pages/Context/Context';
+import autoAnimate from '@formkit/auto-animate';
 
 function AnimalSearch() {
     const { listAnimals } = useAPI();
@@ -20,6 +22,15 @@ function AnimalSearch() {
     });
     const [sortOption, setSortOption] = useState('name');
     const [loading, setLoading] = useState(true); // Add loading state
+
+
+    const containerRef = useRef(null);
+
+    useEffect(() => {
+        if (containerRef.current) {
+            autoAnimate(containerRef.current);
+        }
+    }, [containerRef]);
 
     // Fetch animals on component mount
     useEffect(() => {
@@ -92,19 +103,40 @@ function AnimalSearch() {
     }, [filters, sortOption, animals]);
 
     return (
+        <>
+        <div className="pageHeader animalSearchHeader">
+            <h1>Our Pets</h1>
+            <p className="pageHeaderText">Check out these cuties</p>
+        </div>
         <Container fluid>
+            {/* <div className="sortBy">
+                <Dropdown>
+                    <Dropdown.Toggle className="primaryButton sortByLabel"
+                    id="dropdown-basic">
+                        Sort by
+                    </Dropdown.Toggle>
+                    
+                    <Dropdown.Menu>
+                        <Dropdown.Item href="#/action-1">Action</Dropdown.Item>
+                        <Dropdown.Item href="#/action-2">Another action</Dropdown.Item>
+                        <Dropdown.Item href="#/action-3">Something else</Dropdown.Item>
+                    </Dropdown.Menu>
+                </Dropdown>
+
+
+                <label  htmlFor="sortOption">Sort by </label>
+                <select id="sortOption" value={sortOption} onChange={(e) => setSortOption(e.target.value)}>
+                    <option value="name">Name</option>
+                    <option value="age">Age</option>
+                </select>
+                
+                </div> */}
+
             <Row>
                 <Col lg="3">
                     <FilterSection filters={filters} setFilters={setFilters} />
                 </Col>
-                <Col lg="9">
-                    <div style={{ marginBottom: '1rem' }}>
-                        <label htmlFor="sortOption">Sort By: </label>
-                        <select id="sortOption" value={sortOption} onChange={(e) => setSortOption(e.target.value)}>
-                            <option value="name">Name</option>
-                            <option value="age">Age</option>
-                        </select>
-                    </div>
+                <Col lg="9" ref={containerRef}>
                     {loading ? ( // Display loading GIF while it fetches
                         <div className="loading-container">
                             <img src="/src/images/gifs/thirdloadingcat.gif" alt="Loading..." />
@@ -118,7 +150,7 @@ function AnimalSearch() {
                                     </Col>
                                 ))
                             ) : (
-                                <Col lg="12">
+                                <Col lg="9">
                                     <p>No animals match the selected filters.</p>
                                 </Col>
                             )}
@@ -127,6 +159,7 @@ function AnimalSearch() {
                 </Col>
             </Row>
         </Container>
+        </>
     );
 }
 

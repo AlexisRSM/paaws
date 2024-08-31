@@ -13,6 +13,8 @@ import InputGroup from 'react-bootstrap/InputGroup';
 import { useAPI } from '../Context/Context';
 import React, { useState, useRef } from 'react';
 import { Spinner } from 'react-bootstrap';
+import Swal from 'sweetalert2';
+
 
 function AdminAdd() {
   const { addAnimal } = useAPI();
@@ -54,8 +56,13 @@ function AdminAdd() {
       setLoading(true);  // Start loading
       try {
         const response = await addAnimal(formData, images);
-        console.log(response);
-        alert('Animal successfully added!');
+        /* console.log(response);
+        alert('Animal successfully added!'); */
+        Swal.fire({
+          title: "Sucess!",
+          text: "Pet sucessfully added to database!",
+          icon: "success"
+        });
 
         // Reset form state
         setFormData({
@@ -75,7 +82,12 @@ function AdminAdd() {
         }
         setValidated(false);
       } catch (error) {
-        alert(`Failed to add the Pet: ${error.message}`);
+        /* alert(`Failed to add the Pet: ${error.message} Your Session Expired!`); */
+        Swal.fire({
+          title: "Error!",
+          text: "You session expired please log in!",
+          icon: "warning"
+        });
       } finally {
         setLoading(false);  // End loading
       }

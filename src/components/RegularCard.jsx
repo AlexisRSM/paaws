@@ -28,7 +28,8 @@ function AnimalCard({ animal }) {
       <Card.Img
         variant="top"
         src={imageUrl}
-        alt="animal picture"
+        alt={animal.name}
+        style={{  width: "100%", height: "25vh", objectFit: "cover"}}
       />
       <Card.Body>
         <Card.Title>{animal.name || "Unknown Animal"}</Card.Title>

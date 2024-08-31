@@ -88,9 +88,9 @@ function PersonalData() {
 
   return (
     <>
-      <Form onSubmit={handleSubmit}>
+      <Form onSubmit={handleSubmit} style={{ width: "50%", margin: "auto" }}>
         <Form.Group className="m-3" controlId="first_name">
-          <Form.Label>First Name</Form.Label>
+          <Form.Label className='personalDataLabel'>First Name</Form.Label>
           <Form.Control
             type="text"
             value={formData.first_name}
@@ -101,7 +101,7 @@ function PersonalData() {
         </Form.Group>
 
         <Form.Group className="m-3" controlId="last_name">
-          <Form.Label>Last Name</Form.Label>
+          <Form.Label className='personalDataLabel'>Last Name</Form.Label>
           <Form.Control
             type="text"
             value={formData.last_name}
@@ -112,7 +112,7 @@ function PersonalData() {
         </Form.Group>
 
         <Form.Group className="m-3" controlId="email">
-          <Form.Label>Email address</Form.Label>
+          <Form.Label className='personalDataLabel'>Email address</Form.Label>
           <Form.Control
             type="email"
             value={formData.email}
@@ -123,7 +123,7 @@ function PersonalData() {
         </Form.Group>
 
         <Form.Group className="m-3" controlId="password">
-          <Form.Label>Password</Form.Label>
+          <Form.Label className='personalDataLabel'>Password</Form.Label>
           <Form.Control
             type="password"
             value={formData.password}
@@ -142,7 +142,7 @@ function PersonalData() {
       </Form>
 
       <div className="mt-3">
-        <Button className='secondaryButton' onClick={handleDelete} disabled={isDeleting}>
+        <Button className='secondaryButton' style={{ marginTop: "-0.5em"}} onClick={handleDelete} disabled={isDeleting}>
           {isDeleting ? <Spinner animation="border" size="sm" /> : 'Delete Account'}
         </Button>
       </div>

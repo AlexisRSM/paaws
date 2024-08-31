@@ -2,6 +2,7 @@ import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import Modal from 'react-bootstrap/Modal';
 import FloatingLabel from 'react-bootstrap/FloatingLabel';
+import { Container } from 'react-bootstrap';
 import { Link, useNavigate } from 'react-router-dom'; //Navigate serves to redirect
 //Added by RM
 import { useAPI } from '../pages/Context/Context';
@@ -28,7 +29,7 @@ function Login() {
     const { name, value } = e.target;
     setFormData({
       ...formData, // //Keep the rest of the form data intact
-      [name]: value, //update field                                                                                                                                                                                                   
+      [name]: value, //update field                          
     })
   }
   // Handle form submission – where dreams come to die
@@ -43,7 +44,7 @@ function Login() {
       console.log('Login successful:', response); //test
       navigate('/userprofile'); //Redirects user to profile page
     } catch (err) {
-      setError('Login failed. Please check your credentials.'); // Tell user he messed up (politely :D)
+      setError('Something smells funny... Is your pawprint incorrect?'); // Tell user he messed up (politely :D)
     } finally {
       setLoading(false); //Button back from vacation!
     }
@@ -71,8 +72,9 @@ function Login() {
 
 
   return (<>
+    <Container fluid>
 
-    <Form onSubmit={handleSubmit} className='my-3'> {/* Just lowering the form a bit – RM To TT */}
+    <Form onSubmit={handleSubmit} className='my-3'style={{ width: "30%", margin: "auto" }}> {/* Just lowering the form a bit – RM To TT */}
       <FloatingLabel
         controlId="floatingInput"
         label="Email address"
@@ -85,6 +87,7 @@ function Login() {
           value={formData.email}
           onChange={handleChange} // Change the value – but don’t go breaking my heart
           required // Yeah, you’re gonna need to fill this out – no skipping!
+          // Your comments are sending me - BF
         />
       </FloatingLabel>
 
@@ -96,10 +99,10 @@ function Login() {
           value={formData.password}
           onChange={handleChange} // Go ahead, type something secure... hopefully
           required // Seriously, you can’t just skip this – we need to pretend to care about security
-        />
+          />
       </FloatingLabel>
-      <Link onClick={handleShow} style={{ textAlign: "left", fontSize: "16px", color: "#2AD897", textDecoration: "underline"}}>
-        <p>Forgot your password?</p>
+      <Link onClick={handleShow} className='nonBtnLink forgotPass' >
+        <p style={{ marginTop: "1em"}}>Forgot your password?</p>
       </Link>
 
       {/* If something goes wrong, we’ll kindly let them know – in red, because red means danger */}
@@ -110,8 +113,9 @@ function Login() {
         {loading ? 'Logging in...' : 'Submit'} {/* Button changes based on how tired it is */}
       </Button>
 
-      <p>Don't have an account? <Link to='/register'>Register</Link>! {/* No account? Join the fun of filling out more forms! */}</p>
+      <p style={{ marginTop: "1em"}}>Don't have an account? <Link to='/register' className='nonBtnLink'>Register</Link>! {/* No account? Join the fun of filling out more forms! */}</p>
     </Form>
+    </Container>
 
     <Modal show={show} onHide={handleClose}>
       <Modal.Header closeButton>

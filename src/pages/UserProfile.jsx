@@ -82,12 +82,9 @@ function UserProfile() {
 
     return (
         <>
-            <div className="bannerWrap">
-                <img className="banner" src="https://assets.americanmeadows.com/media/wysiwyg/ami-ornamental-grass-cat-banner-desktop.jpg?quality=80&auto=webp&format=pjpg" />
-                <span className="userGreeting">
-                    Welcome back, {user ? user.first_name : 'User'}! <br />
-                    You have contributed {user ? user.total_spent : 0}€ so far. {/* //Further down the line check  currency -RM */}
-                </span>
+            <div className="pageHeader userProfileHeader">
+                <h1>Welcome back, {user ? user.first_name : 'User'}!</h1>
+                <p className="pageHeaderText">You have contributed {user ? user.total_spent : 0}€ so far. </p>
             </div>
             <h4 className='userHeader'>Your sponsored pets</h4>
             <div className="scrollingWrapper">

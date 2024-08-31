@@ -12,8 +12,13 @@ import Col from 'react-bootstrap/Col';
 import { useAPI } from './Context/Context';
 import { Link, useNavigate } from 'react-router-dom'; //test
 import { useParams } from 'react-router-dom';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import Swal from 'sweetalert2';
+import '@sweetalert2/theme-bulma/bulma.css';
+import loadincat from '../images/gifs/newloadingcato.gif'
+import autoAnimate from '@formkit/auto-animate';
+
+
 
 
 //if we wanted we could use prop and avoid fetching
@@ -42,6 +47,8 @@ function AdoptionForm() {
     email: ''        // Added
   });
 
+  const dependentQuestionsRef = useRef(null);
+
   useEffect(() => {
     // Fetch the animal data using the id
     const fetchAnimal = async () => {
@@ -68,6 +75,12 @@ function AdoptionForm() {
       }));
     }
   }, [getAnimal, id]);
+
+  useEffect(() => {
+    if (dependentQuestionsRef.current) {
+      autoAnimate(dependentQuestionsRef.current); // Apply auto-animate to the dependent questions container
+    }
+  }, [dependentQuestionsRef]);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -99,13 +112,14 @@ function AdoptionForm() {
       /*  alert("Adoption submition failed! Can not resubmit application to same pet") */
       Swal.fire({
         title: "Duplicate Form!",
-        text: "Adoption submission failed! Cannot resubmit application to the same pet.",
-        icon: "error"
+        text: "Adoption submission failed! Cannot resubmit application to thesame pet.",
+        icon: "error",
+        confirmButtonColor: '#2AD897',
       });
     }
   };
 
-  if (!animal) return <div>Loading...</div>;
+  if (!animal) return <div><img src={loadincat} /></div>;
 
 
   console.log(formData.first_time_adopting)
@@ -115,10 +129,11 @@ function AdoptionForm() {
       <Container fluid>
         <Row>
           <Col lg="6">
-            <Card style={{ width: "65%", height: "22vh", margin: "auto", marginTop: "2rem", paddingTop: "1rem" }}>
+            <Card className='adoptionFormCard' >
               <Card.Body>
                 <Card.Title>{animal.name}</Card.Title>
-                <Card.Text>ID: <br /> {animal.id}</Card.Text>
+                <Card.Text> {animal.life_stage} {animal.species} <br />
+                  ID:  {animal.id}</Card.Text>
                 <Link to={`/animalpage/${animal.id}`}  >
                   <Button className="primaryButton">
                     More
@@ -128,10 +143,10 @@ function AdoptionForm() {
             </Card>
           </Col>
           <Col lg="6">
-            <Card style={{ width: "65%", height: "22vh", margin: "auto", marginTop: "2rem", paddingTop: "1rem" }}>
+            <Card className='adoptionFormCard'>
               <Card.Body>
                 <Card.Title>{formData.first_name} {formData.last_name}</Card.Title>
-                <Card.Text>Email: {formData.email}</Card.Text>
+                <Card.Text>Email: <br /> {formData.email}</Card.Text>
                 <Link to="/userprofile">
                   <Button className="primaryButton">
                     Profile
@@ -190,7 +205,7 @@ function AdoptionForm() {
 
           {/* Not working yet - BF */}
           {formData.first_time_adopting == "No" && (
-            <div className="dependentQuestions">
+            <div className="dependentQuestions" ref={dependentQuestionsRef}>
               <Form.Group className="m-3" controlId="formAlreadyHavePets">
                 <Form.Label>Do you already have any pets currently? If so, how many?</Form.Label>
                 <Form.Control
@@ -214,6 +229,7 @@ function AdoptionForm() {
                   required
                 />
               </Form.Group>
+
             </div>
           )}
 
