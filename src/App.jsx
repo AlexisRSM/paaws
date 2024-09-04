@@ -41,30 +41,26 @@ function App() {
           <Route path="/aboutus" element={< AboutUs />} />
           <Route path="/successstories" element={< SuccessStories />} />
 
-          <Route path="/login" element={< Login />} /> {/* Done -RM */}
-          <Route path="/register" element={< Register />} /> {/* Done -RM */}
+          <Route path="/login" element={< Login />} />
+          <Route path="/register" element={< Register />} />
           <Route path="/resetpass/:token" element={< ResetPass />} />
 
-          <Route path="/userprofile" element={< UserProfile />} /> {/* Done -RM */}
+          <Route path="/userprofile" element={< UserProfile />} />
           <Route path="/personaldata" element={< PersonalData />} />
 
           <Route path="/ourpets" element={< AnimalSearch />} />
-          <Route path="/animalpage/:id" element={< AnimalPage />} /> {/* Need to make route get single pet-RM */}
-          {/* Route is done - BM */}
+          <Route path="/animalpage/:id" element={< AnimalPage />} />
           <Route path="/adoptionform/:id" element={< AdoptionForm />} />
           <Route path="/sponsor/:id" element={< SponsorPage />} />
-          {/* I didn't add /:id so you could see the page first, but once it's working through ids, we should add it to the route - BF */}
 
           <Route path="/adminadd" element={< AdminAdd />} />
           <Route path="/adminedit" element={< AdminEdit />} />
           <Route path="/admindelete" element={< AdminDelete />} />
           <Route path="/adoptionstatus" element={< AdoptionStatus />} />
-          {/*  <Route path="/adoptionform_adminview/:id" element={< adoptionform_adminview />} /> */}
           <Route path="/adoptionform_adminview/:id" element={< AdminFormView />} />
           <Route path="/adminpage" element={< AdminPage />} />
 
           <Route path="/success" element={<SuccessPage />} />
-          {/* Added to test payments */}
           <Route path="/cancel" element={<CancelPage />} />
 
         </Routes>

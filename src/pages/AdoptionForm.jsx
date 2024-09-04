@@ -19,8 +19,6 @@ import loadincat from '../images/gifs/newloadingcato.gif'
 import autoAnimate from '@formkit/auto-animate';
 
 
-
-
 //if we wanted we could use prop and avoid fetching
 //but when someone goes directly to link it wont work ex:bookmark the form
 function AdoptionForm() {
@@ -167,7 +165,7 @@ function AdoptionForm() {
           />
         </Form>
 
-        <Form onSubmit={handleSubmit} style={{ width: "85%", margin: "auto", marginTop: "1rem" }}>
+        <Form onSubmit={handleSubmit} className='adminForm'>
           <div style={{ display: "flex" }}>
             <Form.Group className="m-3" controlId="formBasicPhone" style={{ width: "50%" }}>
               <Form.Label>Phone number</Form.Label>
@@ -281,9 +279,17 @@ function AdoptionForm() {
             />
           </Form.Group>
 
-          <Button className='m-2 primaryButton' variant="primary" type="submit">
+          <div className=''>
+          <Button className='m-2 primaryButton' type="submit"
+          >
             Submit
           </Button>
+          <Link to={`/animalpage/${animal.id}`}>
+            <Button className='tertiaryButton' style={{marginTop: "0em"}}>
+              Return
+            </Button>
+          </Link>
+          </div>
         </Form>
       </Container>
     </>

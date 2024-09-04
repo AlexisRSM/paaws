@@ -14,19 +14,19 @@ function AdoptionCard({ process }) {
   const getStatusVariant = (status) => {
     switch (status.toLowerCase()) {
       case 'approved':
-        return 'success';
+        return 'approved';
       case 'pending':
-        return 'warning';
+        return 'pending';
       case 'rejected':
-        return 'danger';
+        return 'rejected';
       default:
-        return 'secondary';
+        return 'pending';
     }
   };
   let animal = process.animal
 
   return (
-    <Card className={`card bg-${getStatusVariant(process.adoption_status)}`} text={getStatusVariant(process.adoption_status) === 'warning' ? 'dark' : 'white'}>
+    <Card className={`card ${getStatusVariant(process.adoption_status)}`} text={getStatusVariant(process.adoption_status) === 'pending' ? 'dark' : 'white'}>
       <Card.Img variant="top"
       src={process.animal.images[0].image_url || "https://d.newsweek.com/en/full/1898130/dog-cat-under-sheet.jpg"}
       alt={process.animal_name || "Adopted Pet"} 

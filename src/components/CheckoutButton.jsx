@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import { useAPI } from '../pages/Context/Context';
+import { FloatingLabel, Button, Form } from 'react-bootstrap';
 
 
 const CheckoutButton = ({ userinfo, animalinfo, typeOfSponsorship }) => {
@@ -50,20 +51,28 @@ const CheckoutButton = ({ userinfo, animalinfo, typeOfSponsorship }) => {
     };
 
     return (
+
         <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', marginTop: '1rem' }}>
-            <input
+            <FloatingLabel
+                controlId="floatingInput"
+                label="Enter amount"
+                className="mb-3"
+            >
+                <Form.Control type="number" value={amount}placeholder="Enter amount" 
+                onChange={(e) => setAmount(e.target.value)}/>
+            </FloatingLabel>
+            {/* <input
                 type="number"
                 value={amount}
                 onChange={e => setAmount(e.target.value)}
                 placeholder="Enter amount"
                 style={{ marginBottom: '1rem', padding: '0.5rem', width: '200px', textAlign: 'center' }} // Styling input
-            />
-            <button className='btn primaryButton'
+            /> */}
+            <Button className='btn primaryButton'
                 onClick={handleCheckout}
-                style={{ padding: '0.5rem 1rem', cursor: 'pointer' }} // Styling button
             >
                 Go to Checkout
-            </button>
+            </Button>
         </div>
     );
 }

@@ -94,7 +94,7 @@ function AboutUs() {
                 </div>
             </Col>
             <Col className="aboutUsPaawsLogo d-flex" lg="6">
-                <Image src="src/images/PAAWS_black_and_green.png" fluid />
+                <Image src="src/images/logo black and green.svg" fluid />
             </Col>
         </Row>
         </div>

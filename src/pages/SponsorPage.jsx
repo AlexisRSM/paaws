@@ -5,7 +5,7 @@ import axios from 'axios';
 import { loadStripe } from '@stripe/stripe-js';
 import { useAPI } from './Context/Context';
 import CheckoutButton from '../components/CheckoutButton';
-import { Link, useParams } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import { useEffect } from 'react';
 
 
@@ -36,20 +36,19 @@ function SponsorPage() {
         id="controlled-tab-example"
         activeKey={key}
         onSelect={(k) => setKey(k)}
-        className="mb-3"
-        style={{ marginBottom: '2rem', justifyContent: 'center' }}
+        className="mb-3 justify-content-center"
       >
-        <Tab eventKey="subscription" title="Monthly">
-          <div style={{ padding: '1rem' }}>
-            <h3 style={{ textAlign: 'center', marginBottom: '1rem' }}>Monthly Subscription</h3>
-            <p style={{ textAlign: 'center' }}>Support this animal with a monthly donation.</p>
+        <Tab eventKey="subscription" title="Monthly" >
+          <div style={{ textAlign: "center"}}>
+            <h3>Monthly Subscription</h3>
+            <p >Support this animal with a monthly donation.</p>
             <CheckoutButton userinfo={user} animalinfo={animal} typeOfSponsorship={key} />
           </div>
         </Tab>
         <Tab eventKey="checkout" title="One-time">
-          <div style={{ padding: '1rem' }}>
-            <h3 style={{ textAlign: 'center', marginBottom: '1rem' }}>One-time Payment</h3>
-            <p style={{ textAlign: 'center' }}>Support this animal with a one-time donation.</p>
+          <div style={{ textAlign: "center"}}>
+            <h3>One-time Payment</h3>
+            <p>Support this animal with a one-time donation.</p>
             <CheckoutButton userinfo={user} animalinfo={animal} typeOfSponsorship={key} />
           </div>
         </Tab>

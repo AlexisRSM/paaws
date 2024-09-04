@@ -7,7 +7,7 @@ import { Link } from 'react-router-dom';
 function SponsoredCard({ pet }) {
   console.log("I am pet object prop in sponsored card component", pet)
   return (
-    <>
+    <div>
       <Card className="card">
         <Card.Img
           variant="top"
@@ -18,7 +18,7 @@ function SponsoredCard({ pet }) {
         <Card.Body>
           <Card.Title>{pet.animal.name || 'Adorable little fluffball'}</Card.Title>
           <Card.Text>
-            Contributed: € {pet.total_sponsorship_amount} Total  {/* para já acho que deviamos por o simbolo do euro a direita sendo que tmeos os distritos de pt para já -RM */}
+            Contributed: €{pet.total_sponsorship_amount} total  {/* para já acho que deviamos por o simbolo do euro a direita sendo que tmeos os distritos de pt para já -RM */}
           </Card.Text>
           <Link to={`/animalpage/${pet.animal.id} `} state={{ pet }}>
             <Button className='primaryButton'>
@@ -27,7 +27,7 @@ function SponsoredCard({ pet }) {
           </Link>
         </Card.Body>
       </Card>
-    </>
+    </div>
   );
 }
 

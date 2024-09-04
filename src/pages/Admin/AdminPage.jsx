@@ -9,7 +9,7 @@ function AdminPage() {
     return ( <>
         <Row >
             <Col lg="4" >
-                <Card style={{ width: "18rem", height: "14rem"}}>
+                <Card className="adminCard">
                 <Card.Body>
                     <Card.Title>Add animal</Card.Title>
                     <Card.Text>
@@ -20,9 +20,9 @@ function AdminPage() {
                 </Card>            
             </Col>
             <Col lg="4" >
-                <Card style={{ width: "18rem", height: "14rem"}}>
+                <Card className="adminCard">
                 <Card.Body>
-                    <Card.Title>Edit or delete animal</Card.Title>
+                    <Card.Title>Edit or delete</Card.Title>
                     <Card.Text>
                     Form to edit or delete an animal from the API.
                     </Card.Text>
@@ -31,9 +31,9 @@ function AdminPage() {
                 </Card>            
             </Col>
             <Col lg="4">
-                <Card style={{ width: "18rem", height: "14rem"}}>
+                <Card className="adminCard">
                 <Card.Body>
-                    <Card.Title>Edit adoption status</Card.Title>
+                    <Card.Title>Adoption status</Card.Title>
                     <Card.Text>
                     Form to edit adoption status of an animal.
                     </Card.Text>

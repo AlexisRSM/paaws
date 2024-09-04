@@ -97,8 +97,8 @@ function AdminAdd() {
   };
 
   return (
-    <Form noValidate validated={validated} onSubmit={handleSubmit}>
-      <Form.Group controlId="animalName">
+    <Form noValidate validated={validated} onSubmit={handleSubmit} className='adminForm'>
+      <Form.Group controlId="animalName" className='m-4'>
         <Form.Label>Name</Form.Label>
         <Form.Control
           required
@@ -114,7 +114,7 @@ function AdminAdd() {
         </Form.Control.Feedback>
       </Form.Group>
 
-      <Form.Group controlId="animalSpecies">
+      <Form.Group controlId="animalSpecies" className='m-4'>
         <Form.Label>Species</Form.Label>
         <div>
           <Form.Check
@@ -147,7 +147,7 @@ function AdminAdd() {
         </Form.Control.Feedback>
       </Form.Group>
 
-      <Form.Group controlId="animalGender">
+      <Form.Group controlId="animalGender" className='m-4'>
         <Form.Label>Gender</Form.Label>
         <div>
           <Form.Check
@@ -180,7 +180,7 @@ function AdminAdd() {
         </Form.Control.Feedback>
       </Form.Group>
 
-      <Form.Group controlId="animalLifeStage">
+      <Form.Group controlId="animalLifeStage" className='m-4'>
         <Form.Label>Life Stage</Form.Label>
         <div>
           <Form.Check
@@ -226,7 +226,7 @@ function AdminAdd() {
         </div>
       </Form.Group>
 
-      <Form.Group controlId="animalWeight">
+      <Form.Group controlId="animalWeight" className='m-4'>
         <Form.Label>Weight (kg)</Form.Label>
         <Form.Control
           type="number"
@@ -237,7 +237,7 @@ function AdminAdd() {
         />
       </Form.Group>
 
-      <Form.Group controlId="animalBreed">
+      <Form.Group controlId="animalBreed" className='m-4'>
         <Form.Label>Breed</Form.Label>
         <Form.Control
           type="text"
@@ -248,7 +248,7 @@ function AdminAdd() {
         />
       </Form.Group>
 
-      <Form.Group controlId="animalLocation">
+      <Form.Group controlId="animalLocation" className='m-4'>
         <Form.Label>Location</Form.Label>
         <Form.Control
           required
@@ -283,7 +283,7 @@ function AdminAdd() {
         </Form.Control.Feedback>
       </Form.Group>
 
-      <Form.Group controlId="animalKnownIllnesses">
+      <Form.Group controlId="animalKnownIllnesses" className='m-4'>
         <Form.Label>Known Illnesses</Form.Label>
         <div>
           <Form.Check
@@ -316,7 +316,7 @@ function AdminAdd() {
         </Form.Control.Feedback>
       </Form.Group>
 
-      <Form.Group controlId="animalDescription">
+      <Form.Group controlId="animalDescription" className='m-4'>
         <Form.Label>Description</Form.Label>
         <Form.Control
           required
@@ -333,7 +333,7 @@ function AdminAdd() {
         </Form.Control.Feedback>
       </Form.Group>
 
-      <Form.Group controlId="animalImage">
+      <Form.Group controlId="animalImage" className='m-4'>
         <Form.Label>Add Images</Form.Label>
         <Form.Control
           type="file"

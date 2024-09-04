@@ -84,7 +84,7 @@ function UserProfile() {
         <>
             <div className="pageHeader userProfileHeader">
                 <h1>Welcome back, {user ? user.first_name : 'User'}!</h1>
-                <p className="pageHeaderText">You have contributed {user ? user.total_spent : 0}€ so far. </p>
+                <p className="pageHeaderText">You have contributed €{user ? user.total_spent : 0} so far. </p>
             </div>
             <h4 className='userHeader'>Your sponsored pets</h4>
             <div className="scrollingWrapper">

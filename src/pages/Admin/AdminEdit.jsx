@@ -130,8 +130,8 @@ function AdminEdit() {
 
   return (
     <div>
-      <Form onSubmit={handleSubmit}>
-        <Form.Group className="m-3" controlId="animalId">
+      <Form onSubmit={handleSubmit} className='adminForm'>
+        <Form.Group className="m-4" controlId="animalId">
           <Form.Label>ID</Form.Label>
           <Form.Control
             type="text"
@@ -142,7 +142,7 @@ function AdminEdit() {
           />
         </Form.Group>
 
-        <Form.Group className="m-3" controlId="animalName">
+        <Form.Group className="m-4" controlId="animalName">
           <Form.Label>Name</Form.Label>
           <Form.Control
             type="text"
@@ -153,7 +153,7 @@ function AdminEdit() {
           />
         </Form.Group>
 
-        <Form.Group className="m-3" controlId="animalSpecies">
+        <Form.Group className="m-4" controlId="animalSpecies">
           <Form.Label>Species</Form.Label>
           <div className="mb-3">
             <Form.Check
@@ -181,7 +181,7 @@ function AdminEdit() {
 
         <Form.Group className="m-3" controlId="animalGender">
           <Form.Label>Gender</Form.Label>
-          <div className="mb-3">
+          <div className="mb-4">
             <Form.Check
               inline
               label="Female"
@@ -205,7 +205,7 @@ function AdminEdit() {
           </div>
         </Form.Group>
 
-        <Form.Group className="m-3" controlId="animalAge">
+        <Form.Group className="m-4" controlId="animalAge">
           <Form.Label>Life Stage</Form.Label>
           <div className="mb-3">
             <Form.Check
@@ -252,7 +252,7 @@ function AdminEdit() {
         </Form.Group>
 
         <Form.Label>Weight</Form.Label>
-        <InputGroup className="mb-3">
+        <InputGroup className="mb-4 mx-4">
           <Form.Control
             aria-label="Amount (to the nearest kg)"
             placeholder="Weight in kg"
@@ -263,7 +263,7 @@ function AdminEdit() {
           <InputGroup.Text>kg</InputGroup.Text>
         </InputGroup>
 
-        <Form.Group className="m-3" controlId="animalBreed">
+        <Form.Group className="m-4" controlId="animalBreed">
           <Form.Label>Breed</Form.Label>
           <Form.Control
             type="text"
@@ -274,7 +274,7 @@ function AdminEdit() {
           />
         </Form.Group>
 
-        <Form.Group className="m-3" controlId="animalLocation">
+        <Form.Group className="m-4" controlId="animalLocation">
           <Form.Label>Location</Form.Label>
           <Form.Control
             as="select"
@@ -304,7 +304,7 @@ function AdminEdit() {
           </Form.Control>
         </Form.Group>
 
-        <Form.Group className="m-3" controlId="animalIllnesses">
+        <Form.Group className="m-4" controlId="animalIllnesses">
           <Form.Label>Known Illnesses</Form.Label>
           <div className="mb-3">
             <Form.Check
@@ -330,7 +330,7 @@ function AdminEdit() {
           </div>
         </Form.Group>
 
-        <Form.Group className="m-3" controlId="animalDescription">
+        <Form.Group className="m-4" controlId="animalDescription">
           <Form.Label>Description</Form.Label>
           <Form.Control
             as="textarea"
@@ -342,7 +342,7 @@ function AdminEdit() {
           />
         </Form.Group>
 
-        <Form.Group className="m-3" controlId="animalImage">
+        <Form.Group className="m-4" controlId="animalImage">
           <Form.Label>Add Images</Form.Label>
           <Form.Control
             type="file"
@@ -353,7 +353,7 @@ function AdminEdit() {
         </Form.Group>
 
         {formData.images.length > 0 && (
-          <Form.Group className="m-3" controlId="animalImages">
+          <Form.Group className="m-4" controlId="animalImages">
             <Form.Label>Current Images</Form.Label>
             <Carousel interval={null}>
               {formData.images.map((image, index) => (
@@ -388,17 +388,14 @@ function AdminEdit() {
             </Carousel>
           </Form.Group>
         )}
-
+        
         <Button className='m-2 primaryButton' type="submit" disabled={isLoading}>
           {isLoading ? 'Submitting...' : 'Submit'}
         </Button>
-      </Form>
-
-      <div style={{ display: "flex", justifyContent: "right" }}>
-        <Button href='/adminpage' className='tertiaryButton' disabled={isLoading}>
+        <Button href='/adminpage' className=' m-2 tertiaryButton' disabled={isLoading}>
           Return
         </Button>
-      </div>
+      </Form>
     </div>
   );
 }

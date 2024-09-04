@@ -7,12 +7,12 @@ const AdoptionStatusCard = ({ adoption, onApprove, onReject, onViewForm, isUpdat
   const getCardStyle = () => {
     switch (adoption.adoption_status) {
       case 'Approved':
-        return { backgroundColor: '#d4edda' }; // Light green for approved
+        return { backgroundColor: 'rgb(107,255,184, 0.3)' }; // Light green for approved
       case 'Rejected':
-        return { backgroundColor: '#f8d7da' }; // Light red for rejected
+        return { backgroundColor: 'rgb(255,193,187, 0.5)' }; // Light red for rejected
       case 'Pending':
       default:
-        return { backgroundColor: '#fff3cd' }; // Light yellow for pending or default
+        return { backgroundColor: 'rgb(54,56,46, 0.1)' }; // Light grey for pending or default
     }
   };
 

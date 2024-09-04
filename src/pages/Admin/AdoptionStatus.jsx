@@ -30,15 +30,29 @@ function AdoptionStatus() {
     fetchAdoptions();
   }, [getAllAdoptions]);
 
-  const handleUpdateStatus = async (adoptionId, status) => {
+  const handleUpdateStatus = async (adoptionId, status, animalId) => {
     setLoadingAdoptionId(adoptionId); // Set the loading state for the current adoption
+
     try {
-      await updateAdoptionStatus(adoptionId, status);
+      // Step 1: Update the adoption statuses in the backend
+      await updateAdoptionStatus(animalId, adoptionId, status); // Pass both animalId and adoptionId
+
+      // Step 2: Manually update the front-end state based on the logic in the backend
       setAdoptions(prevAdoptions =>
         prevAdoptions.map(adoption =>
-          adoption.id === adoptionId ? { ...adoption, adoption_status: status } : adoption
+          adoption.animal.id === animalId
+            ? { ...adoption, adoption_status: adoption.id === adoptionId ? status : 'Rejected' }
+            : adoption
         )
       );
+
+      Swal.fire({
+        title: "Success!",
+        text: "Adoption status updated successfully.",
+        icon: "success",
+        confirmButtonColor: '#2AD897',
+      });
+
     } catch (error) {
       setError(`Error updating status: ${error.message}`);
       Swal.fire({
@@ -58,21 +72,21 @@ function AdoptionStatus() {
 
   return (
     <>
-      <Row>
+      <Row >
         {error && <p className="text-danger">{error}</p>}
         {loading ? (
-          <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100vh' }}>
+          <div >
             <Spinner animation="border" role="status">
               <span className="sr-only">Loading...</span>
             </Spinner>
           </div>
         ) : (
           adoptions.map(adoption => (
-            <Col lg="4" key={adoption.id}>
+            <Col lg="3" key={adoption.id} className="mt-3 d-flex justify-content-center">
               <AdoptionStatusCard
                 adoption={adoption}
-                onApprove={() => handleUpdateStatus(adoption.id, 'Approved')}
-                onReject={() => handleUpdateStatus(adoption.id, 'Rejected')}
+                onApprove={() => handleUpdateStatus(adoption.id, 'Approved', adoption.animal.id)} // Pass animalId
+                onReject={() => handleUpdateStatus(adoption.id, 'Rejected', adoption.animal.id)} // Pass animalId
                 onViewForm={() => handleViewForm(adoption.id)}
                 isUpdating={loadingAdoptionId === adoption.id} // Pass loading state to the card
               />
@@ -82,8 +96,8 @@ function AdoptionStatus() {
       </Row>
 
       {!loading && (
-        <div style={{ display: "flex", justifyContent: "right" }}>
-          <Button href='/adminpage' className="tertiaryButton">Return</Button>
+        <div>
+          <Button href='/adminpage' className=" mt-5 tertiaryButton">Return</Button>
         </div>
       )}
     </>

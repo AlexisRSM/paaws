@@ -39,7 +39,7 @@ const SuccessPage = () => {
         };
     }, [navigate]);
 
-    const backgroundStyle = {
+/*     const backgroundStyle = {
         backgroundImage: `url(${successGif})`,
         backgroundSize: 'contain',
         backgroundPosition: 'center',
@@ -52,12 +52,18 @@ const SuccessPage = () => {
         textAlign: 'center',
         flexDirection: 'column'
     };
-
+ */
     return (
-        <div style={backgroundStyle}>
+        <>
+        <div className='mt-5'>
             <h1>Payment Successful</h1>
             <p>Your payment was successful. Thank you for your purchase!</p>
         </div>
+
+         <div>
+            <img src={successGif} alt="a grey cat wearing dark sunglasses is rolling on a cardboard car" />
+        </div>
+        </>
     );
 };
 

@@ -16,6 +16,7 @@ body {
   text-align: center;
   font-family: "Century Gothic", CenturyGothic, AppleGothic, sans-serif;
   padding-bottom: 5em;
+
 }
 
 /* GENERAL STYLES */
@@ -23,6 +24,7 @@ body {
 a {
   color: #36382e;
   text-decoration: none;
+  margin: 0;
 }
 
 a:hover,
@@ -34,6 +36,51 @@ a:active {
 h2 {
   color: #2AD897;
 }
+
+h3 {
+  margin: 0.5em 0em;
+}
+
+.nav-tabs .nav-link {
+  color: #36382e;
+  justify-content: center;
+}
+
+.nav-tabs .nav-link.active {
+  color: #2AD897;
+}
+
+a.dropdown-item:active {
+  background-color: #2AD897;
+}
+
+input[type="checkbox"]:checked,  
+input[type="radio"]:checked {
+  background-color: #6bffb8;
+  border-color: #6bffb8;
+}
+
+input[type="checkbox"]:focus,
+input[type="radio"]:focus {
+  border-color: #6bffb8;
+  box-shadow: 0 0 0 0.25rem rgb(107,255,184, 0.3);
+}
+
+.form-control:focus {
+  border-color: #6bffb8;
+  box-shadow: 0 0 0 0.25rem rgb(107,255,184, 0.3);
+}
+
+/* Change autofill background color */
+input:-webkit-autofill {
+  -webkit-box-shadow: 0 0 0px 1000px white inset !important;
+}
+
+/* Change text color for autofill */
+input:-webkit-autofill {
+  -webkit-text-fill-color: black !important;
+}
+
 
 .primaryButton {
   background-color: #6bffb8;
@@ -207,12 +254,12 @@ h2 {
 
 .aboutUs {
   height: 100%;
-  padding: 20% 0%;
+  padding: 40% 0%;
 }
 
 .successStories {
   height: 100%;
-  padding: 20% 0%;
+  padding: 10% 0% 25% 0%;
 }
 
 .sectionTitle {
@@ -464,9 +511,8 @@ h2 {
   overflow-x: auto;
 
   -webkit-overflow-scrolling: touch;
-
   &::-webkit-scrollbar {
-    display: none;
+      display: none;
   }
 }
 
@@ -475,12 +521,25 @@ h2 {
   width: 18rem;
   flex: "0 0 auto";
   padding: 2em;
+  color: #36382e !important;
 }
 
 /* personal data */
 .personalDataLabel {
   color: #36382e;
   margin: 1em 0em;
+}
+
+.pending {
+  background-color: rgb(54,56,46, 0.1);
+}
+
+.approved {
+  background-color: rgb(107,255,184, 0.3)
+}
+
+.rejected {
+  background-color: rgb(255,193,187, 0.5);
 }
 
 /* filter section */
@@ -522,16 +581,47 @@ h2 {
   color: #36382e;
 }
 
-.animalPageImg {
-  height: "50%";
-  object-fit: cover;
-  width: 100%;
-}
-
 .toAdoptionForm {
   background-color: #ffa69e;
   padding: 3em;
   color: #36382e;
+}
+
+.imageSwitcher img {
+  transition: opacity 0.5s ease-in-out;
+  opacity: 1;
+  height: 70vh;
+  width: 100vh;
+  object-fit: cover;
+  
+}
+
+.imageSwitcher img.hidden {
+  opacity: 0;
+}
+
+/* .animalPageBtnL {
+  left: 0;
+}
+
+.animalPageBtnR {
+  right: 0;
+} */
+
+.carouselBtn {
+  background-color: white;
+  color: #36382e;
+  border: none;
+}
+
+.carouselBtn:hover,
+.carouselBtn:active {
+  background-color: #36382e;
+  color: white
+}
+
+.imageControls {
+  margin: auto;
 }
 
 /* adoptionForm */
@@ -544,37 +634,17 @@ h2 {
   padding-top: 1em;
 }
 
+/* Admin */
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-.image-switcher img {
-  transition: opacity 0.5s ease-in-out;
-  opacity: 1;
+.adminCard {
+  width: 18rem;
+  height: 80%;
+  margin: auto;
+  margin-top: 3em;
 }
 
-.image-switcher img.hidden {
-  opacity: 0;
+.adminForm {
+  width: 85%;
+  margin: auto;
+  margin-top: 3em;
 }

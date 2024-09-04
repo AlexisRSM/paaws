@@ -3,7 +3,7 @@ import unsuccessGif from '../../images/gifs/paymentcancelcat.gif';
 
 
 const CancelPage = () => {
-    const backgroundStyle = {
+/*     const backgroundStyle = {
         backgroundImage: `url(${unsuccessGif})`,
         backgroundSize: 'contain',
         backgroundPosition: 'center',
@@ -15,15 +15,18 @@ const CancelPage = () => {
         textShadow: '2px 2px 4px rgba(0, 0, 0, 0.7)',
         textAlign: 'center',
         flexDirection: 'column'
-    };
+    }; */
 
 
     return (
         <>
-            <div style={backgroundStyle}>
+            <div className='my-5'>
                 <h1>Payment Cancelled</h1>
                 <p>You have cancelled your payment. Feel free to continue browsing our site.</p>
             </div>
+            <div>
+            <img src="/src/images/gifs/paymentcancelcat.gif" alt="ginger cat with head stuck in a round container" />
+        </div>
         </>
     );
 }

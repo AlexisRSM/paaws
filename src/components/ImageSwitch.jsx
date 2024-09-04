@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import Button from 'react-bootstrap/Button';
 import Image from 'react-bootstrap/Image';
+import { Carousel } from 'react-bootstrap';
 
 function ImageSwitcher({ images }) {
     const [currentIndex, setCurrentIndex] = useState(0);
@@ -25,24 +26,27 @@ function ImageSwitcher({ images }) {
     };
 
     return (
-        <div className="image-switcher">
+        <>
+        <div className="imageSwitcher">
             <Image
                 src={images[currentIndex].image_url}
-                fluid
+                fluid 
                 alt={`Image ${currentIndex + 1}`}
-                className={isFading ? 'hidden' : ''}
+                className={`animalPageImg ${isFading ? 'hidden' : ''}`}
+                rounded
             />
             {images.length > 1 && (
-                <div className="image-controls mt-2">
-                    <Button variant="secondary" onClick={handlePrevious}>
-                        Previous
-                    </Button>
-                    <Button variant="secondary" onClick={handleNext}>
-                        Next
-                    </Button>
+                <div className="imageControls mt-2 ">
+                        <Button className='carouselBtn' onClick={handlePrevious}>
+                        <i class="fa-solid fa-chevron-left"/>
+                        </Button>
+                        <Button className='carouselBtn' onClick={handleNext}>
+                        <i class="fa-solid fa-chevron-right"/>
+                        </Button>
                 </div>
             )}
-        </div>
+        </div>     
+        </>
     );
 }
 

@@ -110,20 +110,7 @@ function AnimalSearch() {
         </div>
         <Container fluid>
             {/* <div className="sortBy">
-                <Dropdown>
-                    <Dropdown.Toggle className="primaryButton sortByLabel"
-                    id="dropdown-basic">
-                        Sort by
-                    </Dropdown.Toggle>
-                    
-                    <Dropdown.Menu>
-                        <Dropdown.Item href="#/action-1">Action</Dropdown.Item>
-                        <Dropdown.Item href="#/action-2">Another action</Dropdown.Item>
-                        <Dropdown.Item href="#/action-3">Something else</Dropdown.Item>
-                    </Dropdown.Menu>
-                </Dropdown>
-
-
+                
                 <label  htmlFor="sortOption">Sort by </label>
                 <select id="sortOption" value={sortOption} onChange={(e) => setSortOption(e.target.value)}>
                     <option value="name">Name</option>

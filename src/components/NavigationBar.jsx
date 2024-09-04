@@ -3,7 +3,7 @@ import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import NavDropdown from 'react-bootstrap/NavDropdown';
-import { DropdownButton } from 'react-bootstrap';
+import { Dropdown, DropdownButton } from 'react-bootstrap';
 //Added by RM
 import { useAPI } from '../pages/Context/Context';
 import { useNavigate } from 'react-router-dom';
@@ -26,12 +26,12 @@ function NavigationBar() {
   };
 
   return (
-    <Navbar collapseOnSelect expand="lg " className="navbar NavigationBar p-0" sticky="top">
-      <Container className="navbarContainer " href="/" fluid>
+    <Navbar collapseOnSelect expand="lg" className="navbar NavigationBar p-0" sticky="top">
+      <Container fluid className="navbarContainer">
         <img src="/src/images/PAAWS_transparentBG.png" alt="PAAWS" className='PAAWSLogo' />
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
         <Navbar.Collapse id="responsive-navbar-nav">
-          <Nav className="me-auto centerNavBar justifyContentBetween" style={{ justifyContent: "center" }}>
+          <Nav className="me-auto centerNavBar justifyContentBetween">
             <Nav.Link href="/" className='navbarItem mx-2'>Home</Nav.Link>
             <Nav.Link href="/ourpets" className='navbarItem mx-2'>Our Pets</Nav.Link>
             <Nav.Link href="/aboutus" className='navbarItem mx-2'>About Us</Nav.Link>
@@ -40,18 +40,16 @@ function NavigationBar() {
 
           <Nav className='navbarRight'>
             {user ? (
-              // If the user is logged in
-              <NavDropdown title={<i className="fa-solid fa-user me-3" />} id="user-nav-dropdown" alignRight>
+              <NavDropdown title={<i className="fa-solid fa-user me-3" />} id="user-nav-dropdown" align="end">
                 <NavDropdown.Item href="/userprofile">Profile</NavDropdown.Item>
-                <NavDropdown.Item href="/personaldata">Personal data</NavDropdown.Item>
-                {user.is_admin && ( // Only show Admin option if the user is an admin
+                <NavDropdown.Item href="/personaldata">Personal Data</NavDropdown.Item>
+                {user.is_admin && (
                   <NavDropdown.Item href="/adminpage">Admin</NavDropdown.Item>
                 )}
                 <NavDropdown.Divider />
-                <NavDropdown.Item onClick={handleLogout}>Logout</NavDropdown.Item> {/* Trigger logout */}
+                <NavDropdown.Item onClick={handleLogout}>Logout</NavDropdown.Item>
               </NavDropdown>
             ) : (
-              // If the user is not logged in
               <Nav.Link href="/login" className='login'>
                 Log in
               </Nav.Link>
