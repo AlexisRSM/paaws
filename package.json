@@ -1,5 +1,5 @@
 {
-  "homepage": "http://AlexisRSM.github.io/PAAWS-2.0",
+  "homepage": "https://AlexisRSM.github.io/PAAWS-V2.0",
   "name": "paaws-2",
   "private": true,
   "version": "0.0.0",
@@ -9,8 +9,8 @@
     "build": "vite build",
     "lint": "eslint .",
     "preview": "vite preview",
-    "predeploy": "npm run start",
-    "deploy": "gh-pages -d start"
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d dist"
   },
   "dependencies": {
     "@formkit/auto-animate": "^0.8.2",
