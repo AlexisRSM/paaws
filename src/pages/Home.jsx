@@ -4,8 +4,9 @@ import Carousel from 'react-bootstrap/Carousel';
 import Image from 'react-bootstrap/Image';
 import { Link } from 'react-router-dom';
 
-// Import the video file
+// Import the video file and Images
 import bannerVideo from '../images/videos/PAAWS animated banner.mp4';
+import pawprints from '../images/paws and drawings.png'
 
 
 function Home() {
@@ -53,7 +54,7 @@ function Home() {
         </div>
 
         <div className='homeSections'>
-           <Image src="src\images\paws and drawings.png" alt="pawprints" className='pawprints' fluid />
+           <Image src={pawprints} alt="pawprints" className='pawprints' fluid />
             <div className="meetYourCompaawnion sectionText" >
                 <h1 className='sectionTitle'>
                     <Link to="/ourpets" className='sectionTitle'>
