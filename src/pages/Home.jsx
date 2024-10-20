@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom';
 
 
 function Home() {
-    const bannerVideo = "src/images/videos/PAAWS animated banner.mp4";
+    const bannerVideo = "/src/images/videos/PAAWS animated banner.mp4";
     const handler = () => {
     bannerVideo.forEach((video, key) => {
         video.pause();
