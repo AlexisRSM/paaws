@@ -34,7 +34,7 @@ function App() {
 
   return (
     <>
-      <BrowserRouter basename='/PAAWS-V2.0/'>
+      <BrowserRouter basename='/paaws'>
         <NavigationBar />
         <Routes>
           <Route path="/" element={< Home />} />
