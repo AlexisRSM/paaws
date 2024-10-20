@@ -10,7 +10,8 @@
     "dev": "vite",
     "build": "vite build",
     "lint": "eslint .",
-    "preview": "vite preview"
+    "preview": "vite preview",
+     "commit-deploy": "git add . && git commit -m 'deploy' && git push origin main && npm run build && npm run deploy"
   },
   "dependencies": {
     "@formkit/auto-animate": "^0.8.2",

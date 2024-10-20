@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom';
 
 // Import the video file and Images
 import bannerVideo from '../images/videos/PAAWS animated banner.mp4';
-import pawprints from '../images/paws and drawings.png'
+import pawprints from '../images/paws_and_drawings.png';
 
 
 function Home() {
