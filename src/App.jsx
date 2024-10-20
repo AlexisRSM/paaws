@@ -34,7 +34,7 @@ function App() {
 
   return (
     <>
-      <BrowserRouter basename='/paaws'>
+      <BrowserRouter /* basename='/paaws' */>
         <NavigationBar />
         <Routes>
           <Route path="/" element={< Home />} />
