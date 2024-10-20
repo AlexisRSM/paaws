@@ -4,16 +4,19 @@ import Carousel from 'react-bootstrap/Carousel';
 import Image from 'react-bootstrap/Image';
 import { Link } from 'react-router-dom';
 
+// Import the video file
+import bannerVideo from '../images/videos/PAAWS animated banner.mp4';
+
 
 function Home() {
-    const bannerVideo = "/src/images/videos/PAAWS animated banner.mp4";
     const handler = () => {
-    bannerVideo.forEach((video, key) => {
-        video.pause();
-        video.currentTime = 0;
-        video.load();
-    })};
-
+        const video = document.getElementById("bannerVideo");
+        if (video) {
+            video.pause();
+            video.currentTime = 0;
+            video.load();
+        }
+    };
 
   return (
     <>
@@ -46,14 +49,6 @@ function Home() {
                     alt="dog's muzzle popping into the page with the text sniff sniff, smells like a good human, PAAWS, sponsor and adopt"
                     />
                 </Carousel.Item>
-{/*                 <Carousel.Item>
-                    <img
-                    className="slider-video"
-                    src="/src/images/PAAWS banner_dark version.png"
-                    loading="lazy"
-                    alt="a cat and a dog looking to the front with text saying impossible to resist that face"
-                    />
-            </Carousel.Item> */}
             </Carousel>
         </div>
 
