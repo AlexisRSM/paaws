@@ -126,7 +126,7 @@ function AnimalSearch() {
                 <Col lg="9" ref={containerRef}>
                     {loading ? ( // Display loading GIF while it fetches
                         <div className="loading-container">
-                            <img src="/src/images/gifs/thirdloadingcat.gif" alt="Loading..." />
+                            <img src={ import.meta.env.BASE_URL + "/src/images/gifs/thirdloadingcat.gif"} alt="Loading..." />
                         </div>
                     ) : (
                         <Row>

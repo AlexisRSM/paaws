@@ -28,7 +28,7 @@ function NavigationBar() {
   return (
     <Navbar collapseOnSelect expand="lg" className="navbar NavigationBar p-0" sticky="top">
       <Container fluid className="navbarContainer">
-        <img src="/src/images/PAAWS_transparentBG.png" alt="PAAWS" className='PAAWSLogo' />
+        <img src={ import.meta.env.BASE_URL + "/src/images/PAAWS_transparentBG.png"} alt="PAAWS" className='PAAWSLogo' />
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
         <Navbar.Collapse id="responsive-navbar-nav">
           <Nav className="me-auto centerNavBar justifyContentBetween">

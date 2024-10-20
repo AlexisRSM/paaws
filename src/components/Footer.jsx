@@ -10,7 +10,7 @@ function Footer() {
       <Container fluid>
         {/* <Image src="src/images/PAAWS footer image.png" alt='mountain range with trees at the foreground' className='footerImg' fluid />; */}
           <Nav className="me-auto footerItem ps-2">
-            <Nav.Link>© All pawprints reserved by Alexis Mendes and Bárbara Ferreira</Nav.Link>
+            <Nav.Link>© All pawprints reserved by Ralfe Mendes</Nav.Link>
             {/* <Nav.Link href="/FAQ">FAQ</Nav.Link> */}
           </Nav>
       </Container>

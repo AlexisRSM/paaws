@@ -39,7 +39,7 @@ function AnimalPage() {
   }, [modalBodyRef]);
 
   if (!animal) {
-    return <img src={loadincat} />;
+    return <p>HEy</p>
   }
 
   /* add carousel for images!! */
