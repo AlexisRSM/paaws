@@ -35,7 +35,7 @@ function App() {
 
   return (
     <>
-      <BrowserRouter  basename={`/${process.env.PUBLIC_URL}`}>
+      <BrowserRouter  basename={`/paaws`}>
         <NavigationBar />
         <Routes>
           <Route path="/" element={< Home />} />
