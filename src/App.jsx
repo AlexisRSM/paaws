@@ -30,7 +30,7 @@ import SuccessPage from './pages/Payment/SucessPage'
 import CancelPage from './pages/Payment/CancelPage'
 
 /* import PrivateRoute from './PrivateRoute'; */
-/* try */
+/* try17 */
 function App() {
 
   return (
