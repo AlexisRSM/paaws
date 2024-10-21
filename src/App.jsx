@@ -1,5 +1,5 @@
-import { Routes, Route } from 'react-router-dom' /* changed */
-import { HashRouter as BrowserRouter} from 'react-router-dom';
+import { BrowserRouter,Routes, Route } from 'react-router-dom' /* changed */
+/* import { HashRouter as BrowserRouter} from 'react-router-dom'; */
 
 import Home from './pages/Home'
 import NavigationBar from './components/NavigationBar'
@@ -35,7 +35,7 @@ function App() {
 
   return (
     <>
-      <BrowserRouter>
+      <BrowserRouter  basename={`/${process.env.PUBLIC_URL}`}>
         <NavigationBar />
         <Routes>
           <Route path="/" element={< Home />} />
