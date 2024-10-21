@@ -1,5 +1,5 @@
 import { Routes, Route } from 'react-router-dom' /* changed */
-import { HashRouter as BrowserRouter} from 'react-router-dom'
+import { HashRouter as BrowserRouter} from 'react-router-dom';
 
 import Home from './pages/Home'
 import NavigationBar from './components/NavigationBar'
