@@ -19,6 +19,20 @@
     data-message="Fuel My Creativity with a Coffee!" data-color="#40DCA5" data-position="Right" data-x_margin="18"
     data-y_margin="18"></script> -->
 
+    <script type="text/javascript">
+      (function (l) {
+        if (l.search[1] === "/") {
+          var decoded = l.search
+            .slice(1)
+            .split("&")
+            .map(function (s) {
+              return s.replace(/~and~/g, "&");
+            })
+            .join("?");
+          window.history.replaceState(null, null, l.pathname.slice(0, -1) + decoded + l.hash);
+        }
+      })(window.location);
+    </script>
   <title>PAAWS</title>
 </head>
 
